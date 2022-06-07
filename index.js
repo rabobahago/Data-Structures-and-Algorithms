@@ -55,9 +55,15 @@ function generateDocument(characters, document) {
   // W
   const charResults = generateCountChar(characters);
   const docResults = generateCountChar(document);
-  for (let char in charResults) {
-    if (!docResults.hasOwnProperty(char));
+  for (let char in docResults) {
+    if (
+      !charResults.hasOwnProperty(char) &&
+      docResults[char] !== charResults[char]
+    ) {
+      return false;
+    }
   }
+  return true;
 }
 function generateCountChar(str) {
   let results = {};
@@ -70,4 +76,4 @@ function generateCountChar(str) {
   }
   return results;
 }
-console.log(generateDocument("abbhhh", "ggshshs"));
+console.log(generateDocument("aabcccccccccccccccccccccccc", "abacc"));
