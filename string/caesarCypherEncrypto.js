@@ -1,10 +1,13 @@
 function caesarCipherEncryptor(string, key) {
-  let result = [];
+  let results = [];
+  //this done to reduce the character key so it will not be greater
+  // than the requirement in the UTE-16
   let newLetter = key % 26;
+
   for (const letter of string) {
-    result.push(createNewLetter(letter, newLetter));
+    results.push(createNewLetter(letter, newLetter));
   }
-  return result.join("");
+  return results.join("");
 }
 function createNewLetter(stringLetter, keyNew) {
   let newLetterCode = stringLetter.charCodeAt() + keyNew;

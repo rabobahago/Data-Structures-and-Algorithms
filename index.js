@@ -51,3 +51,23 @@ console.log(matches_array);
 let name = "Hi people, I love to sell myself all corner ";
 let regrex = /[a-e]gi/;
 console.log(name.match(regexp));
+function generateDocument(characters, document) {
+  // W
+  const charResults = generateCountChar(characters);
+  const docResults = generateCountChar(document);
+  for (let char in charResults) {
+    if (!docResults.hasOwnProperty(char));
+  }
+}
+function generateCountChar(str) {
+  let results = {};
+  for (let elem of str) {
+    if (!results[elem]) {
+      results[elem] = 1;
+    } else {
+      results[elem]++;
+    }
+  }
+  return results;
+}
+console.log(generateDocument("abbhhh", "ggshshs"));
