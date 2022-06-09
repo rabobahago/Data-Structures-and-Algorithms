@@ -26,4 +26,3 @@ function anagram(wordsOne, wordsTwo) {
   }
   return true;
 }
-console.log(anagram("restful", "fluster"));
