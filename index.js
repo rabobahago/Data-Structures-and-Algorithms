@@ -28,22 +28,4 @@ function anagram(wordsOne, wordsTwo) {
 }
 console.log(anagram("restful", "fluster"));
 
-function reverseWordsInString(string) {
-  let words = [];
-  let startOfWord = 0;
-  for (let id = 0; id < string.length; id++) {
-    let character = string[id];
-    if (character === " ") {
-      words.push(string.slice(startOfWord, id));
-      startOfWord = id;
-    } else if (string[startOfWord] === " ") {
-      words.push(" ");
-      startOfWord = id;
-    }
-  }
-  words.push(string.slice(startOfWord));
-  reverseList(words);
-  return words.join(" ");
-}
-function reverseList(words) {}
-console.log(reverseWordsInString("hello world ooooo"));
+

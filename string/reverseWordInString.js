@@ -38,3 +38,10 @@ function reverseList(list) {
   }
   return list;
 }
+
+function minimumCharactersForWords(words) {
+  let stringOfWords = words.join("");
+  let stringSet = new Set(stringOfWords);
+  return Array.from(stringSet);
+}
+console.log(minimumCharactersForWords(["this", "that"]));
