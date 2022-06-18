@@ -20,5 +20,8 @@ function longestSubstringWithoutDuplication(string) {
     //final the last seen of the current character value to be equal to i
     lastSeen[char] = i;
   }
-  return string.slice(longest[1], longest[0]);
+  return string.slice(longest[0], longest[1]);
 }
+// Time O(N)
+//Space O(N, A) where N is the number character in the string and A is longest
+//string stored
