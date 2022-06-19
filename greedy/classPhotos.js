@@ -19,3 +19,4 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   //else return true
   return true;
 }
+// time O(NlogN) and Space(1)
