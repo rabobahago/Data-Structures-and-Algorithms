@@ -17,9 +17,11 @@ function helperGetPermutations(array, currentPermutations, permutations) {
     permutations.push(currentPermutations);
   } else {
     for (let i = 0; i < array.length; i++) {
-      //slice the  front and back of the current element
+      //slice the  front and back of the current element to return as new array
       let newPermutations = array.slice(0, i).concat(array.slice(i + 1));
+      //concat the current element to the current permutations array
       let current = currentPermutations.concat(array[i]);
+      //call the helper with set of new parameters
       helperGetPermutations(newPermutations, current, permutations);
     }
   }
