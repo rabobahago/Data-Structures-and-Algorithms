@@ -10,7 +10,7 @@ function arrayOfProducts(array) {
     leftValue *= array[i];
   }
   let rightValue = 1; //initial right value
-  for (let i = array.length - 1; i > -1; i--) {
+  for (let i = array.length - 1; i >= -1; i--) {
     //set first value of left products to equal 1,
     //while remaining values will depend on array[i]
     rightProduct[i] = rightValue;
@@ -22,4 +22,4 @@ function arrayOfProducts(array) {
   }
   return products;
 }
-console.log(arrayOfProducts([23, 4, 5]));
+//time O(n) and space O(1)
