@@ -31,6 +31,4 @@ function longestPeak(array) {
   }
   return longestPeaks;
 }
-
-// Do not edit the line below.
-exports.longestPeak = longestPeak;
+//time O(n) and space O(1)
