@@ -1,3 +1,4 @@
+//solution one
 function arrayOfProducts(array) {
   const products = new Array(array.length).fill(1); //[1, 1, , 1, 1]
   const leftProduct = new Array(array.length).fill(1); //[1, 1, , 1, 1]
@@ -23,3 +24,19 @@ function arrayOfProducts(array) {
   return products;
 }
 //time O(n) and space O(1)
+
+//solution two
+function arrayOfProducts(array) {
+  let products = [];
+  for (let i = 0; i < array.length; i++) {
+    let productStore = 1;
+    for (let j = 0; j < array.length; j++) {
+      if (i !== j) {
+        productStore *= array[j];
+      }
+    }
+    products[i] = productStore;
+  }
+  return products;
+}
+//time O(n^2) and O(n)
