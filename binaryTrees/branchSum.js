@@ -21,3 +21,4 @@ function helperBranchSums(node, total, sums) {
   helperBranchSums(node.left, total, sums);
   helperBranchSums(node.right, total, sums);
 }
+//time O(n) and space O(n)
