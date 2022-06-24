@@ -1,3 +1,4 @@
+//time O(n) and Space O(1)
 function removeDuplicatesFromLinkedList(linkedList) {
   //let the current  node equal to head node;
   let currentNode = linkedList;

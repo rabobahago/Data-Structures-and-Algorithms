@@ -1,4 +1,4 @@
-// Feel free to add new properties and methods to the class.
+//time O(1) and Space O(1)
 class MinMaxStack {
   constructor() {
     this.minMaxStack = [];
@@ -30,7 +30,6 @@ class MinMaxStack {
     );
     this.minMaxStack.push(minmax);
     this.stack.push(number);
-    return this.stack.length;
   }
 
   getMin() {
