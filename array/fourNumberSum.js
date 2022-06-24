@@ -14,7 +14,7 @@ function fourNumberSum(array, targetSum) {
     for (let k = 0; k < i; k++) {
       const currentSum = array[i] + array[k];
       if (!(currentSum in allPairSums)) {
-        allPairSums[currentSum] = [[array[k]], array[i]];
+        allPairSums[currentSum] = [[array[k], array[i]]];
       } else {
         allPairSums[currentSum].push([array[k], array[i]]);
       }
@@ -22,4 +22,3 @@ function fourNumberSum(array, targetSum) {
   }
   return quadruplets;
 }
-console.log(fourNumberSum([3, 6, 8, 9, 10, 11, 12, 13, 14, 15], 4));

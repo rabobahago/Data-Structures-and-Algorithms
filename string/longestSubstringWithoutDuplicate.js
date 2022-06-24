@@ -1,5 +1,5 @@
 function longestSubstringWithoutDuplication(string) {
-    //last we see a character as a key and it current being stored in this object
+  //last we see a character as a key and it current being stored in this object
   let lastSeen = {};
   //start last letter of unique character
   let longest = [0, 1];
