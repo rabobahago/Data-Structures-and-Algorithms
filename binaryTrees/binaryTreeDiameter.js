@@ -1,3 +1,4 @@
+//time O(n) and average space O(h) for a balance tree and  worst case of O(n) for a unbalance tree
 function binaryTreeDiameter(tree) {
   //call the tree diameter
   return getTreeInfo(tree).diameter;
