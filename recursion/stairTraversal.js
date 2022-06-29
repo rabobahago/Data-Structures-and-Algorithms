@@ -9,6 +9,9 @@ function numberOfWaysToTop(height, maxSteps, memoize) {
   //declare  numberOfways
   let numberOfWays = 0;
   //for loop
+  //the reason why we need this min function here, is that there are
+  //cases where maxStep will less than height since max height is
+  //decrease by every step in the recursive call.
   for (let step = 1; step < Math.min(maxSteps, height) + 1; step++) {
     numberOfWays += numberOfWaysToTop(height - step, maxSteps, memoize);
   }
