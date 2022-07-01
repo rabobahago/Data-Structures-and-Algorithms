@@ -21,7 +21,7 @@ class BST {
           currentNode = currentNode.left;
         }
       } else {
-        if (currentNode.left === null) {
+        if (currentNode.right === null) {
           currentNode.right = new BST(value);
           break;
         } else {
@@ -62,7 +62,7 @@ class BST {
           currentNode.right.remove(currentNode.value, currentNode);
         } else if (parentNode === null) {
           if (currentNode.left !== null) {
-            currentNode.value = currentNode.right.value;
+            currentNode.value = currentNode.left.value;
             currentNode.right = currentNode.left.right;
             currentNode.left = currentNode.left.left;
           } else if (currentNode.right !== null) {
@@ -85,7 +85,7 @@ class BST {
   }
   getMinValue() {
     let currentNode = this;
-    while (currentNode !== null) {
+    while (currentNode.left !== null) {
       currentNode = currentNode.left;
     }
     return currentNode.value;
