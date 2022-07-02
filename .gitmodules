@@ -1,0 +1,3 @@
+[submodule "AlgoCasts"]
+	path = AlgoCasts
+	url = https://github.com/StephenGrider/AlgoCasts.git
