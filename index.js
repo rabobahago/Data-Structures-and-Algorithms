@@ -87,3 +87,82 @@ function taskAssignment(k, tasks) {
   return result;
 }
 console.log(taskAssignment(3, [1, 3, 5, 3, 1, 4]));
+const solve = (intArray) => {
+  let sumRight = 0;
+  let sumLeft = 0;
+  let start = 0;
+  let end = intArray.length - 1;
+  let mid = Math.floor((start + end) / 2);
+  console.log(mid);
+  for (let i = 0; i < intArray.length; i++) {
+    if (i <= mid) sumLeft += intArray[i];
+    if (i > mid + 1) sumRight += intArray[i];
+  }
+  return sumRight === sumLeft;
+};
+console.log(solve([5, 4, 3, 9]));
+console.log(solve([5, 1, 3, 9]));
+console.log(solve([5, 5, -1, 3, 9]));
+function capitalize(str) {
+  let result = [];
+  for (let char of str.split(" ")) {
+    result.push(char[0].toUpperCase() + char.slice(1));
+  }
+  return result.join(" ");
+}
+console.log(capitalize("hello world"));
+function steps(n) {
+  for (let row = 0; row < n; row++) {
+    let steps = "";
+    for (let col = 0; col < n; col++) {
+      if (col <= row) steps += "#";
+      else steps += " ";
+    }
+    console.log(steps);
+  }
+}
+console.log(steps(6));
+function stepRecursive(n, row = 0, stair = "") {
+  if (n === row) {
+    return;
+  }
+  if (n === stair.length) {
+    console.log(stair);
+    stepRecursive(n, row + 1, "");
+    return;
+  }
+  if (stair.length <= row) {
+    stair += "#";
+  } else {
+    stair += " ";
+  }
+  stepRecursive(n, row, stair);
+}
+console.log(stepRecursive(6));
+function chessboard(n) {
+  if (n !== 8) return "n * n is the dimension, where n is 8. pls enter 8";
+  for (let row = 0; row < n; row++) {
+    let stair = "";
+    for (let col = 0; col < n; col++) {
+      if ((row + col) % 2 === 0) stair += "#";
+      else stair += " ";
+    }
+    console.log(stair);
+  }
+}
+console.log(chessboard(7));
+function pyramid(n){
+  let midpoint = Math.floor(Math.floor((2 * n -1)/ 2);
+  for(let row = 0; row < n; row++){
+    let stair = '';
+    for(let column = 0; column < 2 * n - 1; column++){
+         if(midpoint - row <= column && midpoint + row >=column){
+          stair += '#';
+         }else{
+          stair += ' ';
+         }
+    }
+    console.log(stair)
+  }
+}
+console.log(pyramid(8));
