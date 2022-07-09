@@ -151,18 +151,106 @@ function chessboard(n) {
   }
 }
 console.log(chessboard(7));
-function pyramid(n){
-  let midpoint = Math.floor(Math.floor((2 * n -1)/ 2);
-  for(let row = 0; row < n; row++){
-    let stair = '';
-    for(let column = 0; column < 2 * n - 1; column++){
-         if(midpoint - row <= column && midpoint + row >=column){
-          stair += '#';
-         }else{
-          stair += ' ';
-         }
+function pyramid(n) {
+  let midpoint = Math.floor((2 * n - 1) / 2);
+  for (let row = 0; row < n; row++) {
+    let stair = "";
+    for (let column = 0; column < 2 * n - 1; column++) {
+      if (midpoint - row <= column && midpoint + row >= column) {
+        stair += "#";
+      } else {
+        stair += " ";
+      }
     }
-    console.log(stair)
+    console.log(stair);
   }
 }
 console.log(pyramid(8));
+class Stack {
+  constructor() {
+    this.stackItems = [];
+  }
+  add(item) {
+    this.stackItems.push(item);
+  }
+  remove() {
+    return this.stackItems.pop();
+  }
+  peek() {
+    return this.stackItems[this.stackItems.length - 1];
+  }
+  isEmpty() {
+    if (!this.stackItems.length) return true;
+    return false;
+  }
+}
+const stack = new Stack();
+stack.add(4);
+stack.add(5);
+console.log(stack);
+console.log(stack.peek());
+console.log(stack.isEmpty());
+console.log(stack.remove());
+console.log(stack.remove());
+console.log(stack.isEmpty());
+
+class Priority {
+  constructor(element, priority) {
+    this.element = element;
+    this.priority = priority;
+  }
+}
+class PriorityQueue {
+  constructor() {
+    this.priority = [];
+  }
+  enqueuePriority(element, priority) {
+    let newPriority = new Priority(element, priority);
+    let contain = false;
+    for (let i = 0; i < this.priority.length; i++) {
+      if (this.priority[i].Priority > newPriority.priority) {
+        this.priority.splice(i, 0, newPriority);
+        contain = true;
+        break;
+      }
+    }
+    if (!contain) {
+      this.priority.push(newPriority);
+    }
+  }
+  isEmpty() {
+    if (!this.priority.length) return true;
+    return false;
+  }
+  dequeue() {
+    if (this.isEmpty()) return "No such priority exist";
+    return this.priority.shift();
+  }
+  rear() {
+    if (this.isEmpty()) return "No such priority exist";
+    return this.priority[this.priority.length - 1];
+  }
+  front() {
+    if (this.isEmpty()) return "No such priority exist";
+    return this.priority[0];
+  }
+  getAll() {
+    let str = "";
+    for (let i = 0; i < this.priority.length; i++) {
+      str += this.priority[i].element + " ";
+    }
+    return str;
+  }
+  getLength() {
+    return this.priority.length;
+  }
+}
+const p = new PriorityQueue();
+p.enqueuePriority("add stuff to the store", 1);
+p.enqueuePriority("Travel to Kaduna", 2);
+p.enqueuePriority("Love to see my parent", 3);
+console.log(p);
+console.log(p.front());
+console.log(p.rear());
+console.log(p.dequeue());
+console.log(p.getLength());
