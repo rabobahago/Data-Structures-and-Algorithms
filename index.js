@@ -166,7 +166,7 @@ function pyramid(n) {
   }
 }
 console.log(pyramid(8));
-class Stack {
+class Queue {
   constructor() {
     this.stackItems = [];
   }
@@ -174,41 +174,57 @@ class Stack {
     this.stackItems.push(item);
   }
   remove() {
-    return this.stackItems.pop();
+    return this.stackItems.shift();
   }
   peek() {
-    return this.stackItems[this.stackItems.length - 1];
+    return this.stackItems[0];
   }
   isEmpty() {
     if (!this.stackItems.length) return true;
     return false;
   }
 }
-const stack = new Stack();
+const stack = new Queue();
 stack.add(4);
 stack.add(5);
-console.log(stack);
-console.log(stack.peek());
-console.log(stack.isEmpty());
-console.log(stack.remove());
-console.log(stack.remove());
-console.log(stack.isEmpty());
+const stringStack = new Queue();
+stringStack.add("hello");
+stringStack.add("world");
+function combineStack(QueueA, QueueB) {
+  let q = new Queue();
+  while (QueueA.peek() || QueueB.peek()) {
+    if (QueueA.peek()) {
+      q.add(QueueA.remove());
+    }
+    if (QueueB.peek()) {
+      q.add(QueueB.remove());
+    }
+  }
+  return q;
+}
+console.log(combineStack(stack, stringStack));
+// console.log(stack);
+// console.log(stack.peek());
+// console.log(stack.isEmpty());
+// console.log(stack.remove());
+// console.log(stack.remove());
+// console.log(stack.isEmpty());
 
-class Priority {
-  constructor(element, priority) {
+class Node {
+  constructor(element, index) {
     this.element = element;
-    this.priority = priority;
+    this.index = index;
   }
 }
 class PriorityQueue {
   constructor() {
     this.priority = [];
   }
-  enqueuePriority(element, priority) {
-    let newPriority = new Priority(element, priority);
+  enqueuePriority(element, index) {
+    let newPriority = new Node(element, index);
     let contain = false;
     for (let i = 0; i < this.priority.length; i++) {
-      if (this.priority[i].Priority > newPriority.priority) {
+      if (this.priority[i].index > newPriority.index) {
         this.priority.splice(i, 0, newPriority);
         contain = true;
         break;
@@ -219,14 +235,10 @@ class PriorityQueue {
     }
   }
   isEmpty() {
-    if (!this.priority.length) return true;
-    return false;
+    if (this.priority.length) return false;
+    return true;
   }
-  dequeue() {
-    if (this.isEmpty()) return "No such priority exist";
-    return this.priority.shift();
-  }
-  rear() {
+  peek() {
     if (this.isEmpty()) return "No such priority exist";
     return this.priority[this.priority.length - 1];
   }
@@ -234,15 +246,19 @@ class PriorityQueue {
     if (this.isEmpty()) return "No such priority exist";
     return this.priority[0];
   }
-  getAll() {
-    let str = "";
-    for (let i = 0; i < this.priority.length; i++) {
-      str += this.priority[i].element + " ";
-    }
-    return str;
+  dequeue() {
+    if (this.isEmpty()) return "No such priority exist";
+    return this.priority.shift();
   }
   getLength() {
     return this.priority.length;
+  }
+  getAll() {
+    let str = "";
+    for (let i = 0; i < this.priority.length; i++) {
+      str += this.priority[i].index + " ";
+    }
+    return str;
   }
 }
 const p = new PriorityQueue();
@@ -251,6 +267,71 @@ p.enqueuePriority("Travel to Kaduna", 2);
 p.enqueuePriority("Love to see my parent", 3);
 console.log(p);
 console.log(p.front());
-console.log(p.rear());
+//console.log(p.rear());
 console.log(p.dequeue());
 console.log(p.getLength());
+
+class MinHeap {
+  constructor(array) {
+    this.heap = this.buildHeap(array);
+  }
+
+  buildHeap(array) {
+    const firstParentIdx = Math.floor((array.length - 2) / 2);
+    for (let currentIdx = firstParentIdx; currentIdx >= 0; currentIdx--) {
+      this.siftDown(currentIdx, array.length - 1, array);
+    }
+    return array;
+  }
+  //O(log(n)) time | O(1) space
+  siftDown(currentIdx, endIdx, heap) {
+    let childOneIdx = currentIdx * 2 + 1;
+    while (childOneIdx <= endIdx) {
+      const childTwoIdx =
+        currentIdx * 2 + 2 <= endIdx ? currentIdx * 2 + 2 : -1;
+      let idxToSwap;
+      if (childTwoIdx !== -1 && heap[childTwoIdx] < heap[childOneIdx]) {
+        idxToSwap = childTwoIdx;
+      } else {
+        idxToSwap = childOneIdx;
+      }
+      if (heap[idxToSwap] < heap[currentIdx]) {
+        this.swap(currentIdx, idxToSwap, heap);
+        currentIdx = idxToSwap;
+        childOneIdx = currentIdx * 2 + 1;
+      } else {
+        return;
+      }
+    }
+  }
+
+  siftUp(currentIdx, heap) {
+    let parentIdx = Math.floor((current - 1) / 2);
+    while (currentIdx > 0 && heap[currentIdx] < heap[parentIdx]) {
+      this.swap(currentIdx, parentIdx, heap);
+      currentIdx = parentIdx;
+      parentIdx = Math.floor((currentIdx - 1) / 2);
+    }
+  }
+
+  peek() {
+    return this.heap[0];
+  }
+
+  remove() {
+    this.swap(0, this.heap.length - 1, this.heap);
+    const valueToRemove = this.heap.pop();
+    this.siftDown(0, this.heap.length - 1, this.heap);
+    return valueToRemove;
+  }
+
+  insert(value) {
+    this.heap.push(value);
+    this.siftUp(this.heap.length - 1, this.heap);
+  }
+  swap(i, j, heap) {
+    const temp = heap[j];
+    heap[j] = heap[i];
+    heap[i] = temp;
+  }
+}
