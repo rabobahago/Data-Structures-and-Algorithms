@@ -335,3 +335,41 @@ class MinHeap {
     heap[i] = temp;
   }
 }
+
+class Nod {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+class LinkedList {
+  constructor(head = null) {
+    this.head = head;
+  }
+  insertFirst(data) {
+    let node = new Nod(data, this.head);
+    this.head = node;
+  }
+}
+
+const node = new Nod(80);
+const list = new LinkedList();
+list.head = node;
+console.log(list);
+list.insertFirst(400);
+console.log(list);
+console.log(list.insertFirst(300));
+console.log(list);
+//kadane algorithm
+function maxSubArray(array) {
+  let maxSum = array[0];
+  let sum = array[0];
+  for (let i = 1; i < array.length; i++) {
+    sum = Math.max(sum, sum + array[i]);
+    maxSum = Math.max(sum, maxSum);
+  }
+
+  return maxSum;
+}
+console.log(maxSubArray([2]));
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
