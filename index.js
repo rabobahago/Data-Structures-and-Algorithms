@@ -373,3 +373,34 @@ function maxSubArray(array) {
 }
 console.log(maxSubArray([2]));
 console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+function largestNumbersInArrays(array) {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let sum = array[i][0];
+    for (let j = 1; j < array[i].length; j++) {
+      if (array[i][j] > sum) {
+        sum = array[i][j];
+        console.log(sum);
+      }
+    }
+    result[i] = sum;
+  }
+  return result;
+}
+console.log(
+  largestNumbersInArrays([
+    [3, 5],
+    [8, 8, 0],
+    [8, 70],
+  ])
+);
+function largestNumbersInArraysES6(array) {
+  return array.map((group) => group.reduce((prev, curr) => curr + prev));
+}
+console.log(
+  largestNumbersInArraysES6([
+    [3, 5],
+    [8, 8, 0],
+    [8, 70],
+  ])
+);
