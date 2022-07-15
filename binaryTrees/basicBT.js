@@ -32,11 +32,11 @@ const fo = new Node(4);
 const fi = new Node(5);
 const si = new Node(6);
 o.right = th;
-o.left = t;
-t.left = fo;
-t.right = fi;
-th.right = si;
-console.log(o);
+o.left = t; //      1
+t.left = fo; //     / \
+t.right = fi; //    2   3
+th.right = si; //  / \   \
+console.log(o); // 4   5   6
 
 //depth first Method uses stack
 //Iterative solution
@@ -154,3 +154,54 @@ function minValueRecursion(root) {
   );
 }
 console.log(minValueRecursion(o));
+const maxPathSum = (root) => {
+  if (root === null) return -Infinity;
+  if (root.left === null && root.right === null) return root.value;
+  const maxChildPathSum = Math.max(
+    maxPathSum(root.left),
+    maxPathSum(root.right)
+  );
+  return root.value + maxChildPathSum;
+};
+console.log(maxPathSum(o));
+function minPathSum(root) {
+  if (!root) return Infinity;
+  if (root.left === null && root.right === null) return root.value;
+  return root.value + Math.min(minPathSum(root.left), minPathSum(root.right));
+}
+console.log(minPathSum(o));
+
+function pathTargetSum(root, target) {
+  if (!root) return 0;
+  if (root.left === null && root.right === null) return root.value;
+  const path = pathTargetSum(root.left, target);
+  console.log(path);
+  // return (
+  //   root.value +
+  //     minPathSum(root.left, target) +
+  //     minPathSum(root.right, target) ===
+  //   target
+  // );
+}
+console.log(pathTargetSum(o, 7));
+
+var hasPathSum = function (root, targetSum) {
+  return checkTree(root, targetSum, 0);
+  function checkTree(root, targetSum, sum) {
+    if (!root) {
+      return false;
+    }
+
+    sum += root.val;
+
+    if (root.left === null && root.right === null) {
+      return sum === targetSum;
+    }
+
+    return (
+      checkTree(root.left, targetSum, sum) ||
+      checkTree(root.right, targetSum, sum)
+    );
+  }
+};
+console.log(hasPathSum(a, 9));
