@@ -170,38 +170,3 @@ function minPathSum(root) {
   return root.value + Math.min(minPathSum(root.left), minPathSum(root.right));
 }
 console.log(minPathSum(o));
-
-function pathTargetSum(root, target) {
-  if (!root) return 0;
-  if (root.left === null && root.right === null) return root.value;
-  const path = pathTargetSum(root.left, target);
-  console.log(path);
-  // return (
-  //   root.value +
-  //     minPathSum(root.left, target) +
-  //     minPathSum(root.right, target) ===
-  //   target
-  // );
-}
-console.log(pathTargetSum(o, 7));
-
-var hasPathSum = function (root, targetSum) {
-  return checkTree(root, targetSum, 0);
-  function checkTree(root, targetSum, sum) {
-    if (!root) {
-      return false;
-    }
-
-    sum += root.val;
-
-    if (root.left === null && root.right === null) {
-      return sum === targetSum;
-    }
-
-    return (
-      checkTree(root.left, targetSum, sum) ||
-      checkTree(root.right, targetSum, sum)
-    );
-  }
-};
-console.log(hasPathSum(a, 9));

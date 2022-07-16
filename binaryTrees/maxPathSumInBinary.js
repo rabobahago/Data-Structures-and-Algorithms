@@ -1,5 +1,4 @@
 function maxPathSum(tree) {
-  let arr = [];
   let max = -Infinity;
   const dsf = (tree) => {
     if (!tree) return 0;
