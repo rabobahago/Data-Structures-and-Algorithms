@@ -1,4 +1,5 @@
 const splittingString = (string, k) => {
+  //time O(n) and O(n)
   let result = [];
   while (string.length > 0) {
     result.push(string.slice(0, k));
