@@ -2,6 +2,7 @@ const returnStringAtCharacter = (string, k) => {
   //   let splitArray = string.split("\n");
   //   const returnString = splitArray.slice(k - 1, k);
   //   return returnString.join("");
+  //time O(n) and space O(1)
   return string
     .split("\n")
     .slice(k - 1, k)

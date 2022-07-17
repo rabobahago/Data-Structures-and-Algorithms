@@ -1,4 +1,5 @@
 const integerEqualToItIndex = (arrayIn) => {
+  //time O(n) and space O(1)
   for (let i = 0; i < arrayIn.length; i++) {
     if (arrayIn[i] === i) return arrayIn[i];
   }

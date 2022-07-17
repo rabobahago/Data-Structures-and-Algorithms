@@ -1,4 +1,5 @@
 const integersFromEndOfArrays = (array, k) => {
+  //time O(n) and space O(n)
   return array.slice(array.length - k);
 };
 console.log(integersFromEndOfArrays([1, 2, 3, 4], 2));
