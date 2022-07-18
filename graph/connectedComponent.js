@@ -27,3 +27,14 @@ const graph = {
   2: [1],
 };
 console.log(connectComponents(graph));
+// const obj = {
+//   num: { a: 1, b: 2 },
+//   week: { a: 40, b: 80 },
+// };
+// let converted = {};
+// for (let elem in obj) {
+//   const { a, b } = obj[elem];
+//   if (!(elem in converted)) converted[elem] = [];
+//   converted[elem].push(a + b);
+// }
+// console.log(converted);

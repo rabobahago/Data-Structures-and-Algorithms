@@ -404,3 +404,98 @@
 //     [8, 70],
 //   ])
 // );
+// const hasPath = (graph, nodeA, nodeB) => {
+//   let visited = new Set();
+//   return explode(graph, nodeA, nodeB, visited);
+// };
+// const explode = (graph, src, dist, visited) => {
+//   if (src === dist) return true;
+//   if (visited.has(String(src))) return false;
+//   visited.add(String(src));
+//   for (let neighbor of graph[src]) {
+//     if (explode(graph, neighbor, dist, visited) === true) return true;
+//   }
+//   return false;
+// };
+
+// const adjacencyList = (edges) => {
+//   const graph = {};
+//   for (let edge of edges) {
+//     const [a, b] = edge;
+//     if (!(a in graph)) graph[a] = [];
+//     if (!(b in graph)) graph[b] = [a];
+//     graph[a].push(b);
+//     graph[b].push(a);
+//   }
+//   return graph;
+// };
+
+// const edges = [
+//   ["i", "j"],
+//   ["k", "i"],
+//   ["m", "k"],
+//   ["k", "l"],
+//   ["o", "n"],
+// ];
+// console.log(hasPath(adjacencyList(edges), "i", "m"));
+
+// const connectComponents = (graph)=>{
+//     let count = 0;
+//     let visited = new Set();
+//     for(let node in graph){
+//         if(explode(graph, node, visited) === true){
+//             count++;
+//         }
+//     }
+//   return count
+// }
+// const  explode = (graph, node, visited)=>{
+//     if(visited.has(String(node))) return false;
+//     visited.add(String(node));
+//     for(let neighbor of graph[node]){
+//         explode(graph, neighbor, visited);
+//     }
+//     return true;
+// }
+// const graph = {
+//     3: [],
+//     4: [6],
+//     6: [4, 5, 7, 8],
+//     8: [6],
+//     7: [6],
+//     5: [6],
+//     1: [2],
+//     2: [1],
+//   };
+//   console.log(connectComponents(graph));
+
+const largestComponent = (graph) => {
+  let visited = new Set();
+  let largest = -Infinity;
+  for (let node in graph) {
+    let size = explore(graph, node, visited);
+    if (size > largest) {
+      largest = size;
+    }
+  }
+  return largest;
+};
+const explore = (graph, src, visited) => {
+  let size = 1;
+  if (visited.has(String(src))) return 0;
+  visited.add(String(src));
+  for (let neighbor of graph[src]) {
+    size += explore(graph, neighbor, visited);
+  }
+  return size;
+};
+const graph = {
+  0: [8, 1, 5],
+  1: [0],
+  5: [0, 8],
+  8: [0, 5],
+  2: [3, 4],
+  3: [2, 3],
+  4: [3, 5],
+};
+console.log(largestComponent(graph));
