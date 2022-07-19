@@ -11,5 +11,13 @@ const movementOfAPersonGivenAnArray = (array) => {
   );
 };
 console.log(
-  movementOfAPersonGiven(["up", "up", "down", "left", "left", "right", "up"])
+  movementOfAPersonGivenAnArray([
+    "up",
+    "up",
+    "down",
+    "left",
+    "left",
+    "right",
+    "up",
+  ])
 );
