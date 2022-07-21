@@ -27,3 +27,5 @@ const findFirstDuplicate = (array) => {
   }
 };
 console.log(findFirstDuplicate([6, 2, 5, 1, 0, 12, 2]));
+console.log(findFirstDuplicate([-6, 1, 5, -6, 0, -2, 3]));
+console.log(findFirstDuplicate([3, 1, 5, 1, 0, -2, 3, 5]));
