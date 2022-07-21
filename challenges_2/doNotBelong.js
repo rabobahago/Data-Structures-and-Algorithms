@@ -1,3 +1,12 @@
+// Find the Character That Doesn't Belong
+// You are given two lowercase single word strings as arguments. The strings are identical except one has a random character inserted. Return the random inserted character.
+
+// Requirements
+// Must return a single character string
+// Example #1
+// solve("flooding", "floodring")
+// > "r"
+
 const doNotBelong = (stringOne, stringTwo) => {
   stringOne.split("").sort().join("");
   stringTwo.split("").sort().join("");
