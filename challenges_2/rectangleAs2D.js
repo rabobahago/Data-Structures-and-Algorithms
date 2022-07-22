@@ -38,11 +38,3 @@ console.log(
     [5, 15],
   ])
 );
-const solve = (intArray) => {
-  let x = intArray[0];
-  let y = [
-    Math.abs(intArray[0][0] - intArray[1][0]),
-    Math.abs(intArray[0][1] - intArray[1][1]),
-  ].sort((a, b) => a - b);
-  return [x, y];
-};
