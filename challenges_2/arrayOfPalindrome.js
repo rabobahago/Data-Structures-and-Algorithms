@@ -2,6 +2,7 @@
 // You are given a lowercase string, which contains at least one 2 or 3 character palindrome as an argument. Return an array of strings containing all the palindromes found in the argument string.
 
 // Palindromes are strings that form the same word if it is reversed.
+
 // Requirements
 // Must return an array of strings
 // Example #1
@@ -20,6 +21,7 @@ const isPalindrome = (string) => {
 const arrayOfPalindromes = (string) => {
   let result = [];
   for (let i = 0; i < string.length - 2; i++) {
+    console.log(string[i]);
     const substr = string.substring(i, i + 3);
     if (isPalindrome(substr)) {
       result.push(substr);
