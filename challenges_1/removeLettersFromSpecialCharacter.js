@@ -1,3 +1,14 @@
+// Remove Letters from Special Characters
+// You are given a string that contains only characters and parenthesis as an argument. Return a string that has the parenthesis removed and contains only the characters.
+
+// Requirements
+// Must return a string
+// Example #1
+// solve("(a)(b)((c))(((d)))")
+// > "abcd"
+// Example #2
+// solve("((ab)(cd)()()df)")
+// > "abcddf"
 const removeLettersFromSpecialCharacter = (string) => {
   //time O(n) and space O(n)
   const removeCharacter = [];
