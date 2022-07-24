@@ -35,5 +35,5 @@ const stringArray = (a, t) => {
   }
 };
 console.log(stringArray([1, 2, 3, 4, 5], "<3"));
-console.log(stringArray([1, 2, 3, 4, 5], ">4"));
-console.log(stringArray([1, 2, 3, 4, 5, 3], "===3"));
+console.log(stringArray([1, 2, 3, 4, 5, 3], "==3"));
+console.log(stringArray([1, 2, 3, 4, 5], ">=4"));

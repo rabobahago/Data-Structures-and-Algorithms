@@ -1,5 +1,7 @@
 // Find the Column Number of a Spreadsheet
-// You are given a string representing a column in a spreadsheet program. A typical spreadsheet program names the columns A-Z, then AA-AZ, then BA-BZ and so on. Return an integer representing the string argument's column number.
+// You are given a string representing a column in a spreadsheet program. A typical spreadsheet
+// program names the columns A-Z, then AA-AZ, then BA-BZ and so on. Return an integer
+// representing the string argument's column number.
 
 // Requirements
 // Must return an integer
