@@ -24,8 +24,9 @@ const sequenceReturnLargestSum = (array, k) => {
   let index = 0;
   while (index < array.length) {
     const subArray = array.slice(index, index + k);
+    console.log(subArray);
     const sum = subArray.reduce((acc, curr) => acc + curr, 0);
-    if (sum >= largest) {
+    if (subArray.length === k && sum >= largest) {
       largest = sum;
       result = subArray;
     }
@@ -33,3 +34,5 @@ const sequenceReturnLargestSum = (array, k) => {
   }
   return result;
 };
+console.log(sequenceReturnLargestSum([100, 101, 0, 0, 9999], 3));
+console.log(sequenceReturnLargestSum([100, 101, -2, 0, -35, 75], 2));

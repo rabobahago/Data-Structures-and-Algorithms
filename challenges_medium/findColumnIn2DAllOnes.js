@@ -28,11 +28,21 @@
 // > false
 
 const findColumnIn2DAllOnes = (array) => {
+  //copy the array
   let rowArray = array.slice();
   let row = helper(rowArray);
+
+  //the code below convert all the columns element into
+  //into 2D array so we can loop through them
+  //easily
   let col = [];
+  //remember we are loop through all the columns that is why array[0]
   for (let i = 0; i < array[0].length; i++) {
     for (let j = 0; j < array.length; j++) {
+      //check to see if there is no element at index i of col
+      //then set the array with array[j][i]
+      //else push array[j][i] to the last array
+      //in the col array
       if (!col[i]) {
         col[i] = [array[j][i]];
       } else {
@@ -40,10 +50,13 @@ const findColumnIn2DAllOnes = (array) => {
       }
     }
   }
+  //call the helper function with col array.
+
   let colGetFromRow = helper(col);
 
   return !!row.length || !!colGetFromRow.length;
 };
+//this return array of element of row or col that are all one's
 const helper = (array) => {
   let result = [];
   array.map((arr) => {

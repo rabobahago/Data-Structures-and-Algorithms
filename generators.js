@@ -70,3 +70,5 @@ for (let code of composeCharacter()) {
   str += String.fromCharCode(code);
 }
 console.log(str);
+console.log(2 | 1);
+console.log(1 ^ 5);
