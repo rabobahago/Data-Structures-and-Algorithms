@@ -21,7 +21,7 @@ const anagramAList = (array) => {
   let sorted = array
     .map((item) => item.split("").sort().join(""))
     .filter((i) => i);
-  const filted = sorted.filter((item, i, arr) => arr.indexOf(item) !== i);
+  const filted = sorted.filter((item, i, arr) => arr.indexOf(item) !== i); //this remove every elem once
   return !!filted.length;
 };
 console.log(anagramAList(["looped", "poodle", "dog", "cart", "number"]));
