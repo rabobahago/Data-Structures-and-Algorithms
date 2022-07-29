@@ -24,6 +24,7 @@
 // Since there are no more inner arrays, we return our final string 'orange'
 const changeStringTwoD = (array) => {
   let result = "";
+  let index = 0;
   for (let i = 0; i < array.length; i++) {
     const [first, second] = array[i];
     if (first === "add") {
@@ -43,8 +44,3 @@ console.log(
     ["add", "e"],
   ])
 );
-
-let str = "heaaallo";
-let remove = "aa";
-const result = remove.split("").reduce((acc, val) => acc.replace(val, ""), str);
-console.log(result);
