@@ -29,9 +29,3 @@ const elem = [
   [4, 6],
 ];
 console.log(sortingTwoDArrayWithoutChange([[3], [6], [1], [7], [4], [5, 10]]));
-function lastCol(elem) {
-  for (let j = 0; j < elem[0].length; j++) {
-    console.log(elem[0][j]);
-  }
-}
-lastCol(elem);

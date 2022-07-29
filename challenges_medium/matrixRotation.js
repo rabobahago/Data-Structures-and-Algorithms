@@ -10,7 +10,7 @@ const matrixRotation = (array) => {
 //transpose of a matrix
 function transpose(matrix) {
   for (let i = 0; i < matrix.length; i++) {
-    for (let j = i; j < matrix[0].length; j++) {
+    for (let j = 0; j < i; j++) {
       let temp = matrix[i][j];
       matrix[i][j] = matrix[j][i];
       matrix[j][i] = temp;
@@ -25,7 +25,11 @@ let elements = [
   [9, 10, 11, 12],
   [13, 14, 15, 16],
 ];
-let t = [[1, 2, 3], [5, 6, 7][(9, 10, 11)], [13, 14, 15]];
+let t = [
+  [1, 2, 3],
+  [5, 6, 7],
+  [9, 10, 11],
+];
 
-console.log(elements);
+console.log(transpose(t));
 console.log(matrixRotation(elements));
