@@ -31,7 +31,6 @@ const mergeOverlappingIntervals = (array, array2) => {
   let k = 2;
   let index = 0;
   let t = result.flat();
-  console.log(t);
   let intervals = [start, last];
   while (index < t.length) {
     final.push(t.slice(index, k));
@@ -48,5 +47,14 @@ console.log(
       [12, 14],
     ],
     [11, 13]
+  )
+);
+console.log(
+  mergeOverlappingIntervals(
+    [
+      [2, 9],
+      [8, 30],
+    ],
+    [12, 16]
   )
 );
