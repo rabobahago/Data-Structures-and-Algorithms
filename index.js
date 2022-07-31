@@ -661,11 +661,49 @@ console.log(
     [1, 2, 2, 1, 3, 8],
   ])
 );
-const checkRowsOrcolumn = (array) => {};
+const checkRowsOrcolumn = (array) => {
+  //row
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].every((a) => a === 1)) {
+      return true;
+    }
+  }
+  //column
+
+  for (let i = 0; i < array[0].length; i++) {
+    let result = [];
+    for (let j = 0; j < array.length; j++) {
+      result.push(array[j][i]);
+    }
+    if (result.every((a) => a === 1)) {
+      return true;
+    }
+  }
+  return false;
+};
 console.log(
   checkRowsOrcolumn([
     [1, 2, 2, 1, 5],
     [0, 1, 1, 1, 1],
     [1, 2, 2, 1, 3],
+  ])
+);
+
+function lastColumns(array) {
+  let columns = [];
+  for (let i = 0; i < array[0].length; i++) {
+    let result = [];
+    for (let j = 0; j < array.length; j++) {
+      result.push(array[j][i]);
+    }
+    columns.push(result);
+  }
+  return columns[columns.length - 1].reverse();
+}
+console.log(
+  lastColumns([
+    [2, 4, 6],
+    [7, 0, 9],
+    [1, 2, 2],
   ])
 );
