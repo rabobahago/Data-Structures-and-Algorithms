@@ -30,19 +30,40 @@
 //  [2,6,10],
 //  [1,5,9]
 // ]
+//time O(n * n) and space complexity O(1)
 const rotateTwoDArrayBy90 = (array, string) => {
   let result;
   if (string === "right") {
-    result = array.map((_, index) => array.map((row) => row[index]).reverse());
+    let rows = array.map((_, index) =>
+      array.map((row) => row[index]).reverse()
+    );
+    result = rotateRows(rows);
   } else {
-    let column = array.map((_, index) => array.map((row) => row[index]));
-    result = rotateColumn(column);
+    let columns = array.map((_, index) => array.map((row) => row[index]));
+    result = rotateColumns(columns);
   }
   return result;
 };
 
-function rotateColumn(array) {
-  // note the length of first row give you number of columns: ;
+const rotateRows = (array) => {
+  //this is done for row
+  for (let i = 0; i < array.length; i++) {
+    let left = 0;
+    let right = array.length - 1;
+    while (left < right) {
+      let temp = array[i][left];
+      array[i][left] = array[i][right];
+      array[i][right] = temp;
+      left++;
+      right--;
+    }
+  }
+  return array;
+};
+
+function rotateColumns(array) {
+  // note the number of elements in the first row give you number of columns;
+
   for (let j = 0; j < array[0].length; j++) {
     let left = 0;
     //the j loop above has cover the
