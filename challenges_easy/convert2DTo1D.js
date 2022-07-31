@@ -1,5 +1,6 @@
 // Convert 2D Array to a 1D Array
-// You are given a two dimensional array containing arrays of integers as an argument. Take each column and return the integer elements in a one dimensional array.
+// You are given a two dimensional array containing arrays of integers as an argument.
+//Take each column and return the integer elements in a one dimensional array.
 
 // Requirements
 // Must return an array of integers
