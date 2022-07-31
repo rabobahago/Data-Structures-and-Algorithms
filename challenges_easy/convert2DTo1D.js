@@ -29,10 +29,10 @@ const convert2D1D = (array) => {
   return result;
 };
 console.log(convert2D1D([[1, 2, 3], [4], [5, 6, 7, 8]]));
-console.log(
-  convert2D1D([
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10],
-  ])
-);
+//console.log(
+//   convert2D1D([
+//     [1, 2, 3, 4],
+//     [5, 6, 7, 8],
+//     [9, 10],
+//   ])
+// );

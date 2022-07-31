@@ -661,3 +661,11 @@ console.log(
     [1, 2, 2, 1, 3, 8],
   ])
 );
+const checkRowsOrcolumn = (array) => {};
+console.log(
+  checkRowsOrcolumn([
+    [1, 2, 2, 1, 5],
+    [0, 1, 1, 1, 1],
+    [1, 2, 2, 1, 3],
+  ])
+);

@@ -31,6 +31,7 @@ const addingRowOrColumn = (elements) => {
 };
 function buildSumOfRows(elements) {
   let result = [];
+
   for (let i = 0; i < elements.length; i++) {
     let sum = 0;
     for (let j = 0; j < elements[i].length; j++) {
