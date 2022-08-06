@@ -1,3 +1,4 @@
+//217. Contains Duplicate
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
 // Example 1:
@@ -14,7 +15,7 @@
 // Output: true
 
 //solution one: 99.75% fast
-var containsDuplicate = function (nums) {
+let containsDuplicate = function (nums) {
   return new Set(nums).size !== nums.length;
 };
 

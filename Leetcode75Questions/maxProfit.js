@@ -1,3 +1,4 @@
+//121. Best Time to Buy and Sell Stock
 // You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
 // You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
@@ -15,7 +16,7 @@
 // Input: prices = [7,6,4,3,1]
 // Output: 0
 // Explanation: In this case, no transactions are done and the max profit = 0.
-var maxProfit = function (prices) {
+let maxProfit = function (prices) {
   // left set = 0 starting from zero
   let left = 0;
   //the interval between between left and right: 1
