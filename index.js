@@ -1450,5 +1450,26 @@ console.log(stringLen.size);
 let week = undefined;
 let queen = 600;
 console.log(week ?? queen);
-let stri = 'hello';
-console.log(...stri)
+let stri = "hello";
+console.log(...stri);
+function closeNeighbor(array, N) {
+  array.sort((a, b) => a - b);
+  let min, max;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] >= N) {
+      min = array[i - 1];
+      max = array[i + 1];
+      break;
+    }
+  }
+  let finalMin = N - min;
+  let finalMax = max - N;
+  let final = Math.min(finalMax, finalMin);
+  for (let i = 0; i < array.length; i++) {
+    if (N - final === array[i] || N + final === array[i]) {
+      return array[i];
+    }
+  }
+}
+console.log(closeNeighbor([14, 13, 34, 1, 6, 3, 7, 8, 10, 11, 12, 13], 10));
+console.log(closeNeighbor([30, -1, 3, 14, 13, 34, 1, 6, 3], 4));
