@@ -1485,3 +1485,23 @@ console.log(1 & 1);
 //left shift
 console.log(1 << 1);
 console.log(1 << 2);
+console.log(Number(001110012334));
+const d = new Object();
+d.name = "rabo";
+console.log(d);
+function Person(age) {
+  (this.name = "John"),
+    (this.age = age),
+    (this.greet = function () {
+      return this.age;
+    });
+}
+
+//console.log(person.name);
+Person.prototype.getDetail = function () {
+  return this.name;
+};
+
+const person = new Person(90);
+console.log(person.greet());
+console.log(person.getDetail());
