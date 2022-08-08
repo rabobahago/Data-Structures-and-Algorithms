@@ -9,7 +9,7 @@
 // return the index of target if it is in nums, or -1 if it is not in nums.
 
 // You must write an algorithm with O(log n) runtime complexity.
-const search = function (nums, target) {
+const searchInRotatedSortedArray = function (nums, target) {
   let left = 0;
   let right = nums.length - 1;
   while (left <= right) {
