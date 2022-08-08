@@ -1473,3 +1473,15 @@ function closeNeighbor(array, N) {
 }
 console.log(closeNeighbor([14, 13, 34, 1, 6, 3, 7, 8, 10, 11, 12, 13], 10));
 console.log(closeNeighbor([30, -1, 3, 14, 13, 34, 1, 6, 3], 4));
+//XOR ^
+console.log(1 ^ 0);
+console.log(1 ^ 1);
+console.log(0 ^ 1);
+console.log(0 ^ 0);
+//carry &
+console.log(1 & 0);
+console.log(0 & 1);
+console.log(1 & 1);
+//left shift
+console.log(1 << 1);
+console.log(1 << 2);
