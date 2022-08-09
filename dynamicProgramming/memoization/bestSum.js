@@ -1,5 +1,5 @@
 //time complexity O(n^m * m) and space O(m ^2)
-
+//brute force approach
 const bestSum = (target, numbers) => {
   if (target === 0) return [];
   if (target < 0) return null;
@@ -19,6 +19,7 @@ const bestSum = (target, numbers) => {
 console.log(bestSum(8, [2, 3, 5]));
 
 // time O(n^m * m) and Space O(m^2)
+//best approach
 const bestSums = (target, numbers, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === 0) return [];

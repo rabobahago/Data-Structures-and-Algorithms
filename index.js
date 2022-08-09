@@ -1520,10 +1520,11 @@ function puzzleWord(target, words) {
     let word = words[i];
     //console.log(word)
     if (word.toLowerCase().includes(target)) {
-      return word;
+      return i;
     }
   }
   return -1;
 }
 console.log(puzzleWord(target, wordBank));
 console.log(puzzleWord("ic", wordBank));
+console.log(puzzleWord("ze", wordBank));

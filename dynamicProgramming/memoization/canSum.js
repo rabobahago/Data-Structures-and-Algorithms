@@ -1,4 +1,5 @@
 //time complexity of O(n^m) and  O(m)
+// brute force approach
 const canSum = (target, numbers) => {
   if (target === 0) return true;
   if (target < 0) return false;
@@ -11,8 +12,9 @@ const canSum = (target, numbers) => {
 console.log(canSum(3, [2, 3, 4, 5, 6, 7]));
 
 //time complexity of O(n*m) and  O(m)
+// best approach
 const canSums = (target, numbers, memo = {}) => {
-  if (target in memo) return true;
+  if (target in memo) return memo[target];
   if (target === 0) return true;
   if (target < 0) return false;
   for (let num of numbers) {

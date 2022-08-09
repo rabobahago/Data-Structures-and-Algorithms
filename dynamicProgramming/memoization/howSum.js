@@ -1,4 +1,5 @@
 // time complexity of O(n^m *m) and O(m)
+//brute force approach
 const howSum = (target, numbers) => {
   if (target === 0) return [];
   if (target < 0) return null;
@@ -16,6 +17,7 @@ console.log(howSum(3, [2, 3, 4, 6]));
 
 //memoize solution
 //time O(n * m) and space o(n)
+//best approach
 const howSums = (target, numbers, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === 0) return [];

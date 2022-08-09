@@ -1,4 +1,5 @@
 //time complexity O(2^n + m) and space of O(m + n)
+//brute force approach
 const gridTravelers = (m, n) => {
   if (m === 1 && n === 1) return 1;
   if (m === 0 || n === 0) return 0;
@@ -9,6 +10,7 @@ console.log(gridTravelers(3, 3));
 
 //this is known as memoization of gridTraveler
 //the  complexity of O(m * n) and space complexity O(m + n)
+//best approach
 const gridTraveler = (m, n, memo = {}) => {
   let key = m + ", " + n; //common gotchas in JavaScript
   if (m === 1 && n === 1) return 1;

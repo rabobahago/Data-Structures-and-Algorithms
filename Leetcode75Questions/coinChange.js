@@ -18,3 +18,4 @@
 
 // Input: coins = [1], amount = 0
 // Output: 0
+const coinChange = (coins, amount) => {};
