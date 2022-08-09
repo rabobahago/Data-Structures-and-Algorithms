@@ -1537,3 +1537,17 @@ function tab(n) {
   return array[n];
 }
 console.log(tab(6));
+
+var coinChange = function (coins, amount) {
+  let dp = new Array(amount + 1).fill(Infinity);
+  dp[0] = 0;
+  for (let amm of coins) {
+    for (let i = 0; i < dp.length; i++) {
+      if (amm <= dp[i]) {
+        dp[i] = Math.min(dp[i], dp[i - amm] + 1);
+      }
+    }
+  }
+  return dp[amount] !== Infinity ? dp[amount] : -1;
+};
+console.log(coinChange([1, 2, 3], 11));
