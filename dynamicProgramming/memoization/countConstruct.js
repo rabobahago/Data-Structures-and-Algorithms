@@ -1,3 +1,5 @@
+//brute force approach
+//O(n^m * m) and space O(m ^2)
 const countConstruct = (target, wordBank) => {
   if (target === "") return 1;
   let count = 0;
@@ -17,7 +19,8 @@ console.log(
 console.log(
   countConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"])
 );
-
+//best approach
+// time O(n * m^2) and space O(m ^2)
 const countConstructs = (target, wordBank, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === "") return 1;
