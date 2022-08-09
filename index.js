@@ -1538,16 +1538,54 @@ function tab(n) {
 }
 console.log(tab(6));
 
-var coinChange = function (coins, amount) {
-  let dp = new Array(amount + 1).fill(Infinity);
-  dp[0] = 0;
-  for (let amm of coins) {
-    for (let i = 0; i < dp.length; i++) {
-      if (amm <= dp[i]) {
-        dp[i] = Math.min(dp[i], dp[i - amm] + 1);
-      }
+// var lengthOfLIS = function (nums) {
+//   let dp = new Array(nums.length);
+//   dp[0] = 1;
+//   for (let i = 0; i < nums.length; i++) {
+//     // local max
+//     let max = 0;
+//     for (let j = 0; j < i; j++) {
+//       if (nums[i] > nums[j]) {
+//         console.log(dp[j])
+//         max = Math.max(dp[j], max);
+//       }
+//     }
+//     dp[i] = max + 1;
+//   }
+//   // result: find the max of all dp[i]'s
+//   return Math.max(...dp);
+// };
+
+var lengthOfLIS = function (nums) {
+  let sortedArr = [];
+  let maxLen = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    let insertIndex = binarySearch(sortedArr, nums[i]);
+    sortedArr.splice(insertIndex, 1, nums[i]);
+
+    maxLen = Math.max(insertIndex + 1, maxLen);
+  }
+
+  return maxLen;
+};
+
+function binarySearch(arr, el) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] == el) {
+      return mid;
+    } else if (arr[mid] > el) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
     }
   }
-  return dp[amount] !== Infinity ? dp[amount] : -1;
-};
-console.log(coinChange([1, 2, 3], 11));
+
+  return left;
+}
+console.log(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]));
