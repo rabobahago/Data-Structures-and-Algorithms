@@ -1505,3 +1505,25 @@ Person.prototype.getDetail = function () {
 const person = new Person(90);
 console.log(person.greet());
 console.log(person.getDetail());
+let wordBank = [
+  "ate",
+  "google",
+  "googleplus",
+  "ket",
+  "facebook",
+  "you",
+  "twoduplicates",
+];
+let target = "plus";
+function puzzleWord(target, words) {
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+    //console.log(word)
+    if (word.toLowerCase().includes(target)) {
+      return word;
+    }
+  }
+  return -1;
+}
+console.log(puzzleWord(target, wordBank));
+console.log(puzzleWord("ic", wordBank));
