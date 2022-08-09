@@ -1,42 +1,3 @@
-//time O(2^n) exponential and space complexity O(n)
-function fib(n) {
-  if (n <= 2) return 1;
-  return fib(n - 1) + fib(n - 2);
-}
-console.log(fib(6));
-//time complexity of O(n) and space(n)
-//this is known as memoization
-function fibbonuci(n, memo = {}) {
-  if (n in memo) return memo[n];
-  if (n <= 2) return 1;
-  memo[n] = fibbonuci(n - 1) + fibbonuci(n - 2);
-  return memo[n];
-}
-console.log(fibbonuci(20));
-
-//time complexity O(2^n + m) and space of O(m + n)
-const gridTravelers = (m, n) => {
-  if (m === 1 && n === 1) return 1;
-  if (m === 0 || n === 0) return 0;
-  return gridTravelers(m - 1, n) + gridTravelers(m, n - 1);
-};
-console.log(gridTravelers(2, 3));
-console.log(gridTravelers(3, 3));
-
-//this is known as memoization of gridTraveler
-//the  complexity of O(m * n) and space complexity O(m + n)
-const gridTraveler = (m, n, memo = {}) => {
-  let key = m + ", " + n; //common gotchas in JavaScript
-  if (m === 1 && n === 1) return 1;
-  if (m === 0 || n === 0) return 0;
-  if (key in memo) return memo[key];
-  memo[key] = gridTraveler(m - 1, n, memo) + gridTraveler(m, n - 1, memo);
-  return memo[key];
-};
-console.log(gridTraveler(2, 3));
-console.log(gridTraveler(3, 3));
-console.log(gridTraveler(10, 10));
-console.log(gridTraveler(20, 20));
 //time complexity of O(n^m) and  O(m)
 const canSum = (target, numbers) => {
   if (target === 0) return true;
@@ -62,7 +23,7 @@ const canSums = (target, numbers, memo = {}) => {
     }
   }
   memo[target] = false;
-  return false;
+  return memo[target];
 };
 console.log(canSum(3, [2, 3, 4, 5, 6, 7]));
 console.log(canSum(300, [7, 4, 2, 1, 2, 3]));
