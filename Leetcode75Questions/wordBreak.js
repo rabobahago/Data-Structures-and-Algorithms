@@ -18,13 +18,15 @@
 // Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
 // Output: fals
 let wordBreak = (s, wordDict, memo = {}) => {
+  //memo base case
   if (s in memo) return memo[s];
+  //our base case
   if (s.length === 0) return true;
   for (let word of wordDict) {
     const indexFound = s.indexOf(word);
     if (indexFound === 0) {
       let suffix = s.slice(word.length);
-      //console.log(suffix);
+      // recall the function with suffix replacing the s, so we can chock of s
       if (wordBreak(suffix, wordDict, memo) === true) {
         return true;
       }
