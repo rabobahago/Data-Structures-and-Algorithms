@@ -33,7 +33,7 @@ const longestIncreasingSubsequence = function (nums) {
   // result: find the max of all dp[i]'s
   return Math.max(...dp);
 };
-
+console.log(longestIncreasingSubsequence([10, 9, 2, 5, 3, 7, 101, 18]));
 //second solution
 // time O(nlogn) and space O(n)
 var lengthOfLIS = function (nums) {
