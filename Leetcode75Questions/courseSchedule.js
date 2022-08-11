@@ -19,7 +19,6 @@ var canFinish = function (numCourses, prerequisites) {
   let graph = Array.from(Array(numCourses), () => []);
   let ranks = Array.from(Array(numCourses).fill(0));
   for (let [post, pre] of prerequisites) {
-    //[[], [0], [0], [1,2]]
     graph[pre].push(post);
     ranks[post]++;
   }
