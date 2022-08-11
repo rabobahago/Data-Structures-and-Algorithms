@@ -47,13 +47,13 @@ var canFinish = function (numCourses, prerequisites) {
   return !numCourses;
 };
 
-//console.log(canFinish(2, [[1, 0]]));
-// console.log(
-//   canFinish(2, [
-//     [1, 0],
-//     [0, 1],
-//   ])
-// );
+console.log(canFinish(2, [[1, 0]]));
+console.log(
+  canFinish(2, [
+    [1, 0],
+    [0, 1],
+  ])
+);
 console.log(
   canFinish(4, [
     [0, 1],
