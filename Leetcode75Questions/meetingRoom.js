@@ -12,12 +12,10 @@
 // Output: true
 const meetingRoom = (intervals) => {
   intervals.sort((a, b) => a[0] - b[0]);
-  //let result = [intervals[0]];
+  let end = [intervals[0][1]];
   for (let i = 1; i < intervals.length; i++) {
-    let e = intervals[i - 1][1];
-    //console.log(intervals[i]);
     let s = intervals[i][0];
-    if (e > s) return false;
+    if (end > s) return false;
   }
   return true;
 };
