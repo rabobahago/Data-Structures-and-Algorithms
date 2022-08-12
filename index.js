@@ -1537,3 +1537,30 @@ function tab(n) {
   return array[n];
 }
 console.log(tab(6));
+const mergeInvervals = (intervals) => {
+  const sorted = intervals.sort((a, b) => {
+    return a[0] - b[0];
+  });
+  const merge = [sorted.shift()];
+};
+console.log(
+  mergeInvervals([
+    [1, 4],
+    [7, 9],
+    [2, 5],
+  ])
+);
+// console.log(
+//   mergeInvervals([
+//     [6, 7],
+//     [2, 4],
+//     [5, 9],
+//   ])
+// );
+// console.log(
+//   mergeInvervals([
+//     [1, 4],
+//     [2, 6],
+//     [3, 5],
+//   ])
+// );
