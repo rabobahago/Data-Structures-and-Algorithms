@@ -12,15 +12,22 @@
 // Output: [[1,5]]
 // Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 const mergeInvervals = () => {
+  // sort by it starting time
   intervals.sort((a, b) => a[0] - b[0]);
+  //push first array into the result
   let result = [intervals[0]];
   for (let interval of intervals) {
+    //get the last element in the result
     let e1 = result[result.length - 1][1];
+    // start element of interval
     let s2 = interval[0];
+    //end element of interval
     let e2 = interval[1];
     if (e1 >= s2) {
+      //pick max b/w e1 and e2 to replace it as new result last value
       result[result.length - 1][1] = Math.max(e1, e2);
     } else {
+      //else push interval into result
       result.push(interval);
     }
   }

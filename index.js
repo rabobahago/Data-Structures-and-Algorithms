@@ -1542,6 +1542,7 @@ const mergeInvervals = (intervals) => {
     return a[0] - b[0];
   });
   const merge = [sorted.shift()];
+  console.log(merge);
 };
 console.log(
   mergeInvervals([
@@ -1550,6 +1551,8 @@ console.log(
     [2, 5],
   ])
 );
+let result = [[2, 5]];
+console.log(result[result.length - 1][1]);
 // console.log(
 //   mergeInvervals([
 //     [6, 7],
