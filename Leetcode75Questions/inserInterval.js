@@ -13,11 +13,10 @@
 // Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 // Output: [[1,2],[3,10],[12,16]]
 // Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
-const insertInterval = (intervals, newInterval) => {
+var insertInterval = function (intervals, newInterval) {
   let result = [];
   for (let i = 0; i < intervals.length; i++) {
     let interval = intervals[i];
-    //if overlap
     if (
       Math.max(interval[0], newInterval[0]) <=
       Math.min(interval[1], newInterval[1])
@@ -32,11 +31,24 @@ const insertInterval = (intervals, newInterval) => {
       result.push(newInterval, ...intervals.slice(i));
       return result;
     }
-    result.push(interval);
+    return result.push(interval);
   }
   result.push(newInterval);
   return result;
 };
+
+console.log(
+  insertInterval(
+    [
+      [1, 2],
+      [3, 5],
+      [6, 7],
+      [8, 10],
+      [12, 16],
+    ],
+    [4, 8]
+  )
+);
 console.log(
   insertInterval(
     [
