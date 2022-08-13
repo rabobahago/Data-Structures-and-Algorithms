@@ -55,3 +55,9 @@ console.log(
     [3, 4],
   ])
 );
+console.log(
+  connectComponents([
+    [0, 2],
+    [1, 2],
+  ])
+);
