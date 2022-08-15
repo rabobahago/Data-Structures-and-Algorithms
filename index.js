@@ -1399,171 +1399,328 @@
 // };
 // const array = [3, 5, 8, [4, 5, [7, [8]]], 684];
 // console.log(array.flat(4));
-const employee = [
-  { id: 1, name: "Yusuf", skills: ["html", "sql", "css"] },
-  { id: 2, name: "Timothy", skills: ["ruby", "sql", "css"] },
-  { id: 3, name: "Joshua", skills: ["JavaScript", "sql", "css", ["React"]] },
-];
-const skillsArray = employee.map((skill) => skill.skills).flat(3);
-console.log(skillsArray);
-const skill = employee.flatMap((skill) => skill.skills);
-console.log(skill);
-const salary = [800, 700, 400, 1000, 500, 600];
-//includes: equality check
-console.log(salary.includes(400));
-//conditional check: that if a certain condition matches
-const sala = salary.some((c) => c === 400 || c > 400);
-console.log(sala);
-const someEven = salary.some((c) => c % 2 === 0);
-console.log(someEven);
-const someOdd = salary.some(
-  (c, _, array) => c % 2 === 1 && array.includes(500)
-);
-console.log(someOdd);
-const allEven = salary.every((c) => c % 2 === 0);
-console.log(allEven);
-const index = salary.findIndex((c) => c > 800);
-console.log(index);
-console.log(salary.findIndex((c) => c % 2 === 0));
-console.log(salary.findIndex((c) => c > 3000));
-console.log(salary.find((c) => c > 55000));
-const reduce = salary.reduce((acc, curr, index, array) => acc + curr, 0);
-console.log(reduce);
-let array = ["red", "green", "yellow", "red"];
-
-let set = new Set(array);
-console.log(set);
-console.log([...set]);
-console.log(set.add("blue"));
-console.log(set.has("green"));
-console.log(set.has("yellow"));
-console.log(set.size);
-console.log(set.delete("green"));
-const stringSet = "hello";
-console.log(new Set(stringSet));
-for (let letter of stringSet) {
-  console.log(letter);
-}
-let string = "hello world";
-let stringLen = new Set(string);
-console.log(stringLen.size);
-let week = undefined;
-let queen = 600;
-console.log(week ?? queen);
-let stri = "hello";
-console.log(...stri);
-function closeNeighbor(array, N) {
-  array.sort((a, b) => a - b);
-  let min, max;
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] >= N) {
-      min = array[i - 1];
-      max = array[i + 1];
-      break;
-    }
-  }
-  let finalMin = N - min;
-  let finalMax = max - N;
-  let final = Math.min(finalMax, finalMin);
-  for (let i = 0; i < array.length; i++) {
-    if (N - final === array[i] || N + final === array[i]) {
-      return array[i];
-    }
-  }
-}
-console.log(closeNeighbor([14, 13, 34, 1, 6, 3, 7, 8, 10, 11, 12, 13], 10));
-console.log(closeNeighbor([30, -1, 3, 14, 13, 34, 1, 6, 3], 4));
-//XOR ^
-console.log(1 ^ 0);
-console.log(1 ^ 1);
-console.log(0 ^ 1);
-console.log(0 ^ 0);
-//carry &
-console.log(1 & 0);
-console.log(0 & 1);
-console.log(1 & 1);
-//left shift
-console.log(1 << 1);
-console.log(1 << 2);
-console.log(Number(001110012334));
-const d = new Object();
-d.name = "rabo";
-console.log(d);
-function Person(age) {
-  (this.name = "John"),
-    (this.age = age),
-    (this.greet = function () {
-      return this.age;
-    });
-}
-
-//console.log(person.name);
-Person.prototype.getDetail = function () {
-  return this.name;
-};
-
-const person = new Person(90);
-console.log(person.greet());
-console.log(person.getDetail());
-let wordBank = [
-  "ate",
-  "google",
-  "googleplus",
-  "ket",
-  "facebook",
-  "you",
-  "twoduplicates",
-];
-let target = "plus";
-function puzzleWord(target, words) {
-  for (let i = 0; i < words.length; i++) {
-    let word = words[i];
-    //console.log(word)
-    if (word.toLowerCase().includes(target)) {
-      return i;
-    }
-  }
-  return -1;
-}
-console.log(puzzleWord(target, wordBank));
-console.log(puzzleWord("ic", wordBank));
-console.log(puzzleWord("ze", wordBank));
-function tab(n) {
-  let array = new Array(n + 1).fill(0);
-  for (let i = 2; i < array.length; i++) {
-    array[1] = 1;
-    array[i] = array[i - 1] + array[i - 2];
-  }
-  return array[n];
-}
-console.log(tab(6));
-const mergeInvervals = (intervals) => {
-  const sorted = intervals.sort((a, b) => {
-    return a[0] - b[0];
-  });
-  const merge = [sorted.shift()];
-  console.log(merge);
-};
-console.log(
-  mergeInvervals([
-    [1, 4],
-    [7, 9],
-    [2, 5],
-  ])
-);
-let result = [[2, 5]];
-console.log(result[result.length - 1][1]);
-// console.log(
-//   mergeInvervals([
-//     [6, 7],
-//     [2, 4],
-//     [5, 9],
-//   ])
+// const employee = [
+//   { id: 1, name: "Yusuf", skills: ["html", "sql", "css"] },
+//   { id: 2, name: "Timothy", skills: ["ruby", "sql", "css"] },
+//   { id: 3, name: "Joshua", skills: ["JavaScript", "sql", "css", ["React"]] },
+// ];
+// const skillsArray = employee.map((skill) => skill.skills).flat(3);
+// console.log(skillsArray);
+// const skill = employee.flatMap((skill) => skill.skills);
+// console.log(skill);
+// const salary = [800, 700, 400, 1000, 500, 600];
+// //includes: equality check
+// console.log(salary.includes(400));
+// //conditional check: that if a certain condition matches
+// const sala = salary.some((c) => c === 400 || c > 400);
+// console.log(sala);
+// const someEven = salary.some((c) => c % 2 === 0);
+// console.log(someEven);
+// const someOdd = salary.some(
+//   (c, _, array) => c % 2 === 1 && array.includes(500)
 // );
+// console.log(someOdd);
+// const allEven = salary.every((c) => c % 2 === 0);
+// console.log(allEven);
+// const index = salary.findIndex((c) => c > 800);
+// console.log(index);
+// console.log(salary.findIndex((c) => c % 2 === 0));
+// console.log(salary.findIndex((c) => c > 3000));
+// console.log(salary.find((c) => c > 55000));
+// const reduce = salary.reduce((acc, curr, index, array) => acc + curr, 0);
+// console.log(reduce);
+// let array = ["red", "green", "yellow", "red"];
+
+// let set = new Set(array);
+// console.log(set);
+// console.log([...set]);
+// console.log(set.add("blue"));
+// console.log(set.has("green"));
+// console.log(set.has("yellow"));
+// console.log(set.size);
+// console.log(set.delete("green"));
+// const stringSet = "hello";
+// console.log(new Set(stringSet));
+// for (let letter of stringSet) {
+//   console.log(letter);
+// }
+// let string = "hello world";
+// let stringLen = new Set(string);
+// console.log(stringLen.size);
+// let week = undefined;
+// let queen = 600;
+// console.log(week ?? queen);
+// let stri = "hello";
+// console.log(...stri);
+// function closeNeighbor(array, N) {
+//   array.sort((a, b) => a - b);
+//   let min, max;
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] >= N) {
+//       min = array[i - 1];
+//       max = array[i + 1];
+//       break;
+//     }
+//   }
+//   let finalMin = N - min;
+//   let finalMax = max - N;
+//   let final = Math.min(finalMax, finalMin);
+//   for (let i = 0; i < array.length; i++) {
+//     if (N - final === array[i] || N + final === array[i]) {
+//       return array[i];
+//     }
+//   }
+// }
+// console.log(closeNeighbor([14, 13, 34, 1, 6, 3, 7, 8, 10, 11, 12, 13], 10));
+// console.log(closeNeighbor([30, -1, 3, 14, 13, 34, 1, 6, 3], 4));
+// //XOR ^
+// console.log(1 ^ 0);
+// console.log(1 ^ 1);
+// console.log(0 ^ 1);
+// console.log(0 ^ 0);
+// //carry &
+// console.log(1 & 0);
+// console.log(0 & 1);
+// console.log(1 & 1);
+// //left shift
+// console.log(1 << 1);
+// console.log(1 << 2);
+// console.log(Number(001110012334));
+// const d = new Object();
+// d.name = "rabo";
+// console.log(d);
+// function Person(age) {
+//   (this.name = "John"),
+//     (this.age = age),
+//     (this.greet = function () {
+//       return this.age;
+//     });
+// }
+
+// //console.log(person.name);
+// Person.prototype.getDetail = function () {
+//   return this.name;
+// };
+
+// const person = new Person(90);
+// console.log(person.greet());
+// console.log(person.getDetail());
+// let wordBank = [
+//   "ate",
+//   "google",
+//   "googleplus",
+//   "ket",
+//   "facebook",
+//   "you",
+//   "twoduplicates",
+// ];
+// let target = "plus";
+// function puzzleWord(target, words) {
+//   for (let i = 0; i < words.length; i++) {
+//     let word = words[i];
+//     //console.log(word)
+//     if (word.toLowerCase().includes(target)) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// }
+// console.log(puzzleWord(target, wordBank));
+// console.log(puzzleWord("ic", wordBank));
+// console.log(puzzleWord("ze", wordBank));
+// function tab(n) {
+//   let array = new Array(n + 1).fill(0);
+//   for (let i = 2; i < array.length; i++) {
+//     array[1] = 1;
+//     array[i] = array[i - 1] + array[i - 2];
+//   }
+//   return array[n];
+// }
+// console.log(tab(6));
+// const mergeInvervals = (intervals) => {
+//   const sorted = intervals.sort((a, b) => {
+//     return a[0] - b[0];
+//   });
+//   const merge = [sorted.shift()];
+//   console.log(merge);
+// };
 // console.log(
 //   mergeInvervals([
 //     [1, 4],
-//     [2, 6],
-//     [3, 5],
+//     [7, 9],
+//     [2, 5],
 //   ])
 // );
+// let result = [[2, 5]];
+// console.log(result[result.length - 1][1]);
+// console.log([101122211111].toString(2));
+// let array = [3, 5, 6];
+// array.prop = true;
+// for (let num of array.keys()) {
+//   console.log(num);
+// }
+// let detail = {
+//   first: "random",
+//   last: "dogo",
+//   get() {
+//     return this.first + " " + this.last + " ";
+//   },
+//   set(first, last) {
+//     this.first = first;
+//     this.last = last;
+//   },
+// };
+// console.log(detail.first);
+// console.log(detail.last);
+// console.log(detail.get());
+// detail.set("queen", "hosea");
+// console.log(detail.get());
+// console.log({ name: 6, ...undefined });
+// console.log({ num: 8, ...234 });
+// console.log({ name: 30, ...null });
+// console.log({ num: 90, ...{ r: 86, t: -12 } });
+// console.log([6, ..."wertyy"]);
+// console.log({ a: 2, ..."abbshsj" });
+// let sch = { name: "rabo", num: 1, detail: { age: 35 } };
+// let schCopy = { ...sch };
+// console.log(schCopy);
+// schCopy.name = "yusuf";
+// schCopy.detail.age = 200;
+// console.log(sch);
+// console.log(schCopy);
+// console.log({ name: "rabo", ...{ name: undefined } });
+// console.log([3, ...[3]]);
+// console.log({ ...{ name: undefined }, name: "random" });
+// const obj = {
+//   something(x, y) {
+//     console.log(this, obj);
+//   },
+// };
+// console.log(obj.something(2, 3));
+// const address = {
+//   street: "Evergreen Terrace",
+//   number: "742",
+//   city: "Springfield",
+//   state: "NT",
+//   zip: "49007",
+// };
+// function picks(obj, ...keys) {
+//   //console.log(keys)
+//   //console.log(Object.keys(obj).filter((key)=>key !== 'street'))
+//   let filted = Object.keys(obj).filter(([key, _value]) => keys.includes(key));
+//   console.log(filted);
+//   return Object.fromEntries(filted);
+// }
+// console.log(picks(address, "street"));
+// //console.log(Object.fromEntries([800]))
+// const arr = [2, 4, 5, 6, 7, 8, 9, 10];
+// arr.prop = true;
+// console.log(Object.keys(arr));
+// console.log(Array.from({ length: 3 }, () => arr.length + 1));
+function targetSum(array, target) {
+  let start = 0,
+    end = array.length - 1,
+    pair = null;
+  for (let i = 0; i < array.length; i++) {
+    if (start === end) {
+      break;
+    } else if (array[start] + array[end] === target) {
+      pair = [array[start], array[end]];
+      break;
+    } else if (array[start] + array[end] < target) {
+      start++;
+    } else {
+      end--;
+    }
+  }
+  return pair;
+}
+//O(n^2)
+// function targetSum(array, target) {
+//   let start = 0,
+//     end = array.length - 1,
+//     pair = null;
+//   while (start !== end) {
+//     let sum = array[start] + array[end];
+//     if (sum === target) {
+//       pair = [array[start], array[end]];
+//       break;
+//     } else if (sum < target) {
+//       start++;
+//     } else {
+//       end--;
+//     }
+//   }
+//   return pair;
+// }
+console.log(targetSum([2, 3, 4, 5, 6, 7, 8], 7));
+console.log(targetSum([1, 2, 3, 4, 5], 7));
+console.log(targetSum([1, 6, 8, 10], 14));
+console.log(targetSum([1, 3, 4, 6, 8, 10], 12));
+console.log(targetSum([1, 2, 3, 4, 5], 10));
+function tripletToZero(array) {
+  array = array.sort((a, b) => a - b);
+  let triplet = [];
+  for (let i = 0; i < array.length; i++) {
+    let target = -array[i];
+    let left = i - 1;
+    //skip duplicates triplet
+    if (i > 0 && array[i] === array[i - 1]) {
+      continue;
+    }
+    searchForTriplet(array, target, left, triplet);
+  }
+  return triplet;
+}
+function searchForTriplet(array, target, left, triplet) {
+  let end = array.length - 1;
+  while (left !== end) {
+    if (array[left] + array[end] === target) {
+      triplet.push([target, array[left], array[end]]);
+      left++;
+      end--;
+      //skip duplicates triplet
+      while (left < end && array[left] === array[left - 1]) {
+        left++;
+      }
+      //skip duplicates triplet
+      while (left < end && array[end] === array[left + 1]) {
+        end--;
+      }
+    } else if (array[left] + array[end] < target) {
+      left++;
+    } else {
+      end--;
+    }
+  }
+}
+console.log(tripletToZero([-3, 0, 1, 2, 1, -1, -1, -2]));
+console.log(tripletToZero([-5, 2, -1, -2, 3]));
+function findMininumWindow(arr) {
+  let left = 0,
+    right = arr.length - 1;
+  while (arr[left] < arr[left + 1] && left < arr.length - 1) {
+    left++;
+  }
+  if (left === arr.length - 1) {
+    return 0;
+  }
+  while (arr[right] > arr[right - 1] && right > -1) {
+    right--;
+  }
+  const subArr = arr.slice(left, right + 1);
+  const min = Math.min(...subArr);
+  const max = Math.max(...subArr);
+  while (arr[left - 1] > min && left > 0) {
+    left--;
+  }
+  while (arr[right + 1] < max && right < arr.length - 1) {
+    right++;
+  }
+  return right - left + 1;
+}
+console.log(findMininumWindow([1, 3, 2, 0, -1, 7, 10]));
+console.log(findMininumWindow([1, 2, 5, 7, 3, 10, 11, 12]));
+console.log(findMininumWindow([1, 2, 3]));
+console.log(findMininumWindow([4, 3, 2, 1]));
+console.log(findMininumWindow([12, 7, 8, 1, 2, 0, 10, 11]));
