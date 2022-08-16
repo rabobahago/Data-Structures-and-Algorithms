@@ -31,21 +31,28 @@
 //  [1,5,9]
 // ]
 //time O(n * n) and space complexity O(1)
-const rotateTwoDArrayBy90 = (array, string) => {
+function rotateTwoDArrayBy90(array, string) {
   let result;
   if (string === "right") {
-    let rows = array.map((_, index) =>
-      array.map((row) => row[index]).reverse()
-    );
-    result = rotateRows(rows);
+    let transpose = transposeMatrix(array);
+    result = reverseRows(transpose);
   } else {
-    let columns = array.map((_, index) => array.map((row) => row[index]));
-    result = rotateColumns(columns);
+    let transpose = transposeMatrix(array);
+    result = reverseColumns(transpose);
   }
   return result;
-};
-
-const rotateRows = (array) => {
+}
+function transposeMatrix(matrix) {
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = i; j < matrix.length; j++) {
+      let temp = matrix[i][j];
+      matrix[i][j] = matrix[j][i];
+      matrix[j][i] = temp;
+    }
+  }
+  return matrix;
+}
+function reverseRows(array) {
   //this is done for row
   for (let i = 0; i < array.length; i++) {
     let left = 0;
@@ -59,9 +66,9 @@ const rotateRows = (array) => {
     }
   }
   return array;
-};
+}
 
-function rotateColumns(array) {
+function reverseColumns(array) {
   // note the number of elements in the first row give you number of columns;
 
   for (let j = 0; j < array[0].length; j++) {
