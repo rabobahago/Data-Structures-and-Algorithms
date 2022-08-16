@@ -1,21 +1,26 @@
 const rotate180TwoDimensionalArray = (elements) => {
   //transpose
-  const transpose = elements.map((_, index) =>
-    elements.map((array) => array[index])
-  );
-  //reverse
-  for (let i = 0; i < transpose.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
+    for (let j = i; j < elements[0].length; j++) {
+      let temp = elements[i][j];
+      elements[i][j] = elements[j][i];
+      elements[j][i] = temp;
+    }
+  }
+
+  //reverse in row
+  for (let i = 0; i < elements.length; i++) {
     let left = 0;
-    let right = transpose.length - 1;
+    let right = elements.length - 1;
     while (left < right) {
-      let temp = transpose[left][i];
-      transpose[left][i] = transpose[right][i];
-      transpose[right][i] = temp;
+      let temp = elements[i][left];
+      elements[i][left] = elements[i][right];
+      elements[i][right] = temp;
       left++;
       right--;
     }
   }
-  return transpose;
+  return elements;
 };
 //save 90 degree output to a variable
 const firstRotate = rotate180TwoDimensionalArray([
