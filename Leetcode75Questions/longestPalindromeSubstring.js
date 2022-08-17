@@ -9,6 +9,7 @@
 
 // Input: s = "cbbd"
 // Output: "bb"
+//Time complexity is O(n^2) and O(1)
 const longestPalindrome = (s) => {
   let longest = "";
   for (let i = 0; i < s.length; i++) {
