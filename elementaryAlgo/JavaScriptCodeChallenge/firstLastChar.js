@@ -4,7 +4,6 @@ function getTheGapX(str) {
   }
   const firstIndex = str.indexOf("X");
   const lastIndex = str.lastIndexOf("X");
-  console.log(firstIndex, lastIndex);
   return firstIndex === lastIndex ? -1 : lastIndex - firstIndex;
 }
 console.log(getTheGapX("JavaScript"));
