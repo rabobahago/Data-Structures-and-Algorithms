@@ -1,3 +1,6 @@
 [submodule "AlgoCasts"]
 	path = AlgoCasts
 	url = https://github.com/StephenGrider/AlgoCasts.git
+[submodule "javascript-code-challenges"]
+	path = javascript-code-challenges
+	url = https://github.com/sadanandpai/javascript-code-challenges.git
