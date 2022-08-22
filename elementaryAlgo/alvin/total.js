@@ -17,3 +17,6 @@ let obj = {
   name: "right",
   number: 3,
 };
+
+if (key in obj) {
+}
