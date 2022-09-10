@@ -16,5 +16,5 @@ const _sum = (array, idx) => {
   return array[idx] + _sum(array, idx + 1);
 };
 console.log(sumImprove([2, 5, 6, 8, 9]));
-//Time: O(n^2)
+//Time: O(n)
 //Space: O(n)
