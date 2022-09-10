@@ -12,3 +12,5 @@ const combinations = (array) => {
 };
 console.log(combinations(["a", "b", "c"]));
 console.log(combinations(["a", "b"]));
+//Time : O(2^n)
+//Space : O(n * n)
