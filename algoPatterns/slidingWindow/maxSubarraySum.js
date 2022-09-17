@@ -1,4 +1,4 @@
-//slide window approach
+//slide window approach: Time Complexity O(n) and space complexity O(1)
 const maxSubarraySumWindow = (array, size) => {
   let max = -Infinity;
   let currentSum = 0;
@@ -13,13 +13,12 @@ const maxSubarraySumWindow = (array, size) => {
 };
 console.log(maxSubarraySumWindow([2, 4, 5, 6, 7, 7], 3));
 
-//Brute Force Approach
+//Brute Force Approach: Time Complexity O(n^2) and Space complexity O(1)
 const maxSubarraySum = (arr, k) => {
   let max = -Infinity;
   for (let i = 0; i < arr.length; i++) {
     let sum = 0;
     for (let j = i; j < k + i; j++) {
-      console.log(arr[j]);
       sum += arr[j];
       if (sum > max) {
         max = sum;
@@ -30,3 +29,17 @@ const maxSubarraySum = (arr, k) => {
 };
 
 console.log(maxSubarraySum([2, 4, 5, 6, 7, 7], 3));
+
+var findMaxAverage = function (nums, k) {
+  let max = 0;
+  let currSum = -Infinity;
+  for (let i = 0; i < nums.length; i++) {
+    currSum += nums[i];
+    if (i >= k - 1) {
+      max = Math.max(currSum, max);
+      currSum -= nums[i - (k - 1)];
+    }
+  }
+  let average = max / 4;
+  return average;
+};
