@@ -20,7 +20,7 @@ const minSubArrayLen = (target, nums) => {
   let startWindow = 0;
   for (let endWindow = 0; endWindow < nums.length; endWindow++) {
     currentSum += nums[endWindow];
-    if (currentSum >= target) {
+    while (currentSum >= target) {
       min = Math.min(min, endWindow - startWindow + 1);
       currentSum -= nums[startWindow];
       startWindow++;
@@ -29,3 +29,4 @@ const minSubArrayLen = (target, nums) => {
   return min === Infinity ? 0 : min;
 };
 console.log(minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1]));
+console.log(minSubArrayLen(4, [1, 4, 4]));

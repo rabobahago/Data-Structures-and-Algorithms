@@ -29,17 +29,3 @@ const maxSubarraySum = (arr, k) => {
 };
 
 console.log(maxSubarraySum([2, 4, 5, 6, 7, 7], 3));
-
-var findMaxAverage = function (nums, k) {
-  let max = 0;
-  let currSum = -Infinity;
-  for (let i = 0; i < nums.length; i++) {
-    currSum += nums[i];
-    if (i >= k - 1) {
-      max = Math.max(currSum, max);
-      currSum -= nums[i - (k - 1)];
-    }
-  }
-  let average = max / 4;
-  return average;
-};
