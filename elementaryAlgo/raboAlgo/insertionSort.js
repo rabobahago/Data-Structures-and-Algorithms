@@ -8,5 +8,7 @@ const insertionSort = (arr) => {
     }
     arr[j + 1] = elementInsert;
   }
+  return arr;
 };
 console.log(insertionSort([2, 1, 0, 3, 4, 9, 87, 6]));
+//O(n^2)

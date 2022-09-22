@@ -1818,6 +1818,16 @@ function outFunc() {
   function innerFunc() {
     console.log(hi);
   }
-  innerFunc();
+  return innerFunc;
 }
-outFunc();
+function exec() {
+  let callfunc = outFunc();
+  callfunc();
+}
+exec();
+
+for (var i = 0; i < 3; i++) {
+  setTimeout(function log() {
+    console.log(i); // What is logged?
+  }, 1000);
+}
