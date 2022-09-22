@@ -1617,24 +1617,24 @@
 // arr.prop = true;
 // console.log(Object.keys(arr));
 // console.log(Array.from({ length: 3 }, () => arr.length + 1));
-function targetSum(array, target) {
-  let start = 0,
-    end = array.length - 1,
-    pair = null;
-  for (let i = 0; i < array.length; i++) {
-    if (start === end) {
-      break;
-    } else if (array[start] + array[end] === target) {
-      pair = [array[start], array[end]];
-      break;
-    } else if (array[start] + array[end] < target) {
-      start++;
-    } else {
-      end--;
-    }
-  }
-  return pair;
-}
+// function targetSum(array, target) {
+//   let start = 0,
+//     end = array.length - 1,
+//     pair = null;
+//   for (let i = 0; i < array.length; i++) {
+//     if (start === end) {
+//       break;
+//     } else if (array[start] + array[end] === target) {
+//       pair = [array[start], array[end]];
+//       break;
+//     } else if (array[start] + array[end] < target) {
+//       start++;
+//     } else {
+//       end--;
+//     }
+//   }
+//   return pair;
+// }
 //O(n^2)
 // function targetSum(array, target) {
 //   let start = 0,
@@ -1653,84 +1653,171 @@ function targetSum(array, target) {
 //   }
 //   return pair;
 // }
-console.log(targetSum([2, 3, 4, 5, 6, 7, 8], 7));
-console.log(targetSum([1, 2, 3, 4, 5], 7));
-console.log(targetSum([1, 6, 8, 10], 14));
-console.log(targetSum([1, 3, 4, 6, 8, 10], 12));
-console.log(targetSum([1, 2, 3, 4, 5], 10));
-function tripletToZero(array) {
-  array = array.sort((a, b) => a - b);
-  let triplet = [];
-  for (let i = 0; i < array.length; i++) {
-    let target = -array[i];
-    let left = i - 1;
-    //skip duplicates triplet
-    if (i > 0 && array[i] === array[i - 1]) {
-      continue;
-    }
-    searchForTriplet(array, target, left, triplet);
-  }
-  return triplet;
+// console.log(targetSum([2, 3, 4, 5, 6, 7, 8], 7));
+// console.log(targetSum([1, 2, 3, 4, 5], 7));
+// console.log(targetSum([1, 6, 8, 10], 14));
+// console.log(targetSum([1, 3, 4, 6, 8, 10], 12));
+// console.log(targetSum([1, 2, 3, 4, 5], 10));
+// function tripletToZero(array) {
+//   array = array.sort((a, b) => a - b);
+//   let triplet = [];
+//   for (let i = 0; i < array.length; i++) {
+//     let target = -array[i];
+//     let left = i - 1;
+//     //skip duplicates triplet
+//     if (i > 0 && array[i] === array[i - 1]) {
+//       continue;
+//     }
+//     searchForTriplet(array, target, left, triplet);
+//   }
+//   return triplet;
+// }
+// function searchForTriplet(array, target, left, triplet) {
+//   let end = array.length - 1;
+//   while (left !== end) {
+//     if (array[left] + array[end] === target) {
+//       triplet.push([target, array[left], array[end]]);
+//       left++;
+//       end--;
+//       //skip duplicates triplet
+//       while (left < end && array[left] === array[left - 1]) {
+//         left++;
+//       }
+//       //skip duplicates triplet
+//       while (left < end && array[end] === array[left + 1]) {
+//         end--;
+//       }
+//     } else if (array[left] + array[end] < target) {
+//       left++;
+//     } else {
+//       end--;
+//     }
+//   }
+// }
+// console.log(tripletToZero([-3, 0, 1, 2, 1, -1, -1, -2]));
+// console.log(tripletToZero([-5, 2, -1, -2, 3]));
+// function findMininumWindow(arr) {
+//   let left = 0,
+//     right = arr.length - 1;
+//   while (arr[left] < arr[left + 1] && left < arr.length - 1) {
+//     left++;
+//   }
+//   if (left === arr.length - 1) {
+//     return 0;
+//   }
+//   while (arr[right] > arr[right - 1] && right > -1) {
+//     right--;
+//   }
+//   const subArr = arr.slice(left, right + 1);
+//   const min = Math.min(...subArr);
+//   const max = Math.max(...subArr);
+//   while (arr[left - 1] > min && left > 0) {
+//     left--;
+//   }
+//   while (arr[right + 1] < max && right < arr.length - 1) {
+//     right++;
+//   }
+//   return right - left + 1;
+// }
+// console.log(findMininumWindow([1, 3, 2, 0, -1, 7, 10]));
+// console.log(findMininumWindow([1, 2, 5, 7, 3, 10, 11, 12]));
+// console.log(findMininumWindow([1, 2, 3]));
+// console.log(findMininumWindow([4, 3, 2, 1]));
+// console.log(findMininumWindow([12, 7, 8, 1, 2, 0, 10, 11]));
+// let map = new Map();
+// map.set(1, "hello");
+// map.set(2, "world");
+// console.log(map);
+// console.log(map.get(1));
+// console.log(map.get(2));
+// console.log(map.get(3));
+// console.log(map.has(1));
+// console.log(map.size);
+// console.log(map.delete(2));
+// function callThis() {
+//   console.log(this);
+// }
+// console.log(callThis());
+// function callThisStrict() {
+//   "use strict";
+//   console.log(this);
+// }
+// callThisStrict();
+// const obj = {
+//   name: "rabo",
+//   getName() {
+//     return this.name;
+//   },
+// };
+// console.log(obj.getName());
+// function Person(name) {
+//   this.age = 45;
+//   this.name = name;
+//   console.log(this);
+// }
+// const person = new Person("rabo");
+// //implicit of this
+// function changeValueThis(num) {
+//   console.log(num);
+//   console.log(Number(this) + num);
+// }
+// changeValueThis.call(8, 80);
+// function changeValueThisApply(name, num) {
+//   console.log(num);
+//   return this + " " + name;
+// }
+// console.log(changeValueThisApply.apply("hello", ["rabo", 89]));
+// let arrowThis = () => this;
+// console.log(arrowThis());
+// const object = {
+//   this: this,
+//   name: "rabo",
+//   arrowThis,
+// };
+// console.log(object.arrowThis());
+// function loop(x) {
+//   let total = 0;
+//   for (let i = 0; i < x; i++) {
+//     total += i;
+//   }
+//   return total;
+// }
+// console.log(loop(5));
+// const map = new Map();
+// console.log(typeof map);
+// console.log(map instanceof Map);
+let rabbit = { name: "rabbit" },
+  dog = { name: "dog" },
+  cat = { name: "cat" };
+const animals = new Map().set(rabbit, "rabbit").set(dog, "dog").set(cat, "cat");
+console.log(animals);
+for (let prop of animals.keys()) {
+  console.log(prop);
 }
-function searchForTriplet(array, target, left, triplet) {
-  let end = array.length - 1;
-  while (left !== end) {
-    if (array[left] + array[end] === target) {
-      triplet.push([target, array[left], array[end]]);
-      left++;
-      end--;
-      //skip duplicates triplet
-      while (left < end && array[left] === array[left - 1]) {
-        left++;
-      }
-      //skip duplicates triplet
-      while (left < end && array[end] === array[left + 1]) {
-        end--;
-      }
-    } else if (array[left] + array[end] < target) {
-      left++;
-    } else {
-      end--;
-    }
-  }
+for (let val of animals.values()) {
+  console.log(val);
 }
-console.log(tripletToZero([-3, 0, 1, 2, 1, -1, -1, -2]));
-console.log(tripletToZero([-5, 2, -1, -2, 3]));
-function findMininumWindow(arr) {
-  let left = 0,
-    right = arr.length - 1;
-  while (arr[left] < arr[left + 1] && left < arr.length - 1) {
-    left++;
-  }
-  if (left === arr.length - 1) {
-    return 0;
-  }
-  while (arr[right] > arr[right - 1] && right > -1) {
-    right--;
-  }
-  const subArr = arr.slice(left, right + 1);
-  const min = Math.min(...subArr);
-  const max = Math.max(...subArr);
-  while (arr[left - 1] > min && left > 0) {
-    left--;
-  }
-  while (arr[right + 1] < max && right < arr.length - 1) {
-    right++;
-  }
-  return right - left + 1;
+console.log(animals.get(rabbit));
+console.log(animals.get(dog));
+animals.forEach((animal) => {
+  console.log(animal);
+});
+for (let prop of animals.entries()) {
+  console.log(prop);
 }
-console.log(findMininumWindow([1, 3, 2, 0, -1, 7, 10]));
-console.log(findMininumWindow([1, 2, 5, 7, 3, 10, 11, 12]));
-console.log(findMininumWindow([1, 2, 3]));
-console.log(findMininumWindow([4, 3, 2, 1]));
-console.log(findMininumWindow([12, 7, 8, 1, 2, 0, 10, 11]));
-let map = new Map();
-map.set(1, "hello");
-map.set(2, "world");
-console.log(map);
-console.log(map.get(1));
-console.log(map.get(2));
-console.log(map.get(3));
-console.log(map.has(1));
-console.log(map.size);
-console.log(map.delete(2));
+console.log(animals.has(rabbit));
+console.log(animals.has(dog));
+console.log(animals.has(cat));
+console.log(animals.size);
+console.log([...animals.entries()]);
+console.log(animals.delete(rabbit));
+console.log(animals.clear());
+console.log(animals);
+function outFunc() {
+  let hi = "hello";
+  function innerFunc() {
+    console.log(hi);
+  }
+  innerFunc();
+}
+outFunc();
