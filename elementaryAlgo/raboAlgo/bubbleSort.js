@@ -14,6 +14,5 @@ const bubbleSort = (arr) => {
   }
   return arr;
 };
-
 console.log(bubbleSort([2, 1, 4, 2, 5, 16, 9]));
 // O(n^2)

@@ -14,7 +14,7 @@ const quickSort = (arr) => {
   }
   //call quick sort recusively until it reaches base case
   //and the base could be empty array or array with single element,
-  //copy the base cases into a new array with the pivot in the center
+  //copy the base cases into a new array with the pivot in the centre
   return [...quickSort(left), pivot, ...quickSort(right)];
 };
 console.log(quickSort([9, 4, 5, 6, 7, 8, 10, 11]));
