@@ -8,4 +8,4 @@ const cartesianProduct = (arr1, arr2) => {
   return cartesian;
 };
 console.log(cartesianProduct([1, 3], [4, 5, 6]));
-// O(mn)
+// Time O(mn) and space
