@@ -174,3 +174,134 @@ console.log(linkedList.print());
 console.log(linkedList.search(100));
 console.log(linkedList.reverse());
 console.log(linkedList.print());
+class NewNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class LinkedListNew {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+  isEmpty() {
+    return this.size === 0;
+  }
+  //prepend
+  prepend(value) {
+    let node = new NewNode(value);
+    if (this.isEmpty()) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      let head = this.head;
+      this.head = node;
+      node.next = head;
+    }
+    this.size++;
+    return this.head;
+  }
+  append(value) {
+    let node = new NewNode(value);
+    if (this.isEmpty()) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      let tail = this.tail;
+      this.tail = node;
+      tail.next = node;
+    }
+    this.size++;
+    return this.head;
+  }
+  insert(value, index) {
+    if (index < 0 || index >= this.size) return "Invalid index";
+    if (index === 0) {
+      this.prepend(value);
+    }
+    if (index === this.size - 1) {
+      this.append(value);
+    }
+    let newNode = new NewNode(value);
+    let current = this.head;
+    let ind = 0;
+    while (current.next) {
+      if (ind === index - 1) {
+        let node = current.next;
+        current.next = newNode;
+        newNode.next = node;
+        this.size++;
+      }
+      index++;
+      current = current.next;
+    }
+    return this.head;
+  }
+  remove(index) {
+    if (index < 0 || index >= this.size - 1) return "Invilid index";
+    if (index === 0) {
+      let head = this.head;
+      this.head = head.next;
+      this.size--;
+      return head;
+    }
+    let current = this.head;
+    let ind = 0;
+    while (current) {
+      if (ind === index - 1) {
+        let next = current.next;
+        current.next = next.next;
+        this.size--;
+        return next;
+      }
+      ind++;
+      current = current.next;
+    }
+  }
+  removeFromEnd() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    let head = this.tail.value;
+    if (this.size === 1) {
+      this.head = null;
+      this.tail = null;
+      this.size--;
+      return head.value;
+    } else {
+      let prev = this.head;
+      while (prev.next !== this.tail) {
+        prev = prev.next;
+      }
+      prev.next = null;
+      this.tail = prev;
+    }
+    this.size--;
+    return head;
+  }
+  print() {
+    let current = this.head;
+    let result = "";
+    while (current) {
+      result += `${current.value} `;
+      current = current.next;
+    }
+    return result;
+  }
+}
+let newLinkedList = new LinkedListNew();
+newLinkedList.prepend(2);
+newLinkedList.prepend(400);
+console.log(newLinkedList);
+console.log(newLinkedList.isEmpty());
+console.log(newLinkedList.print());
+console.log(newLinkedList.append(90));
+console.log(newLinkedList.print());
+console.log(newLinkedList.insert(600, 1));
+console.log(newLinkedList.insert(700, 3));
+console.log(newLinkedList.removeFromEnd(4));
+console.log(newLinkedList);
+console.log(newLinkedList.print());
