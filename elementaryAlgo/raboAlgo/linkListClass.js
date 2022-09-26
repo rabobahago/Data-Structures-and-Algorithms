@@ -1,3 +1,4 @@
+//linkedList without tail
 class Node {
   constructor(value) {
     this.value = value;
@@ -180,7 +181,7 @@ class NewNode {
     this.next = null;
   }
 }
-
+//linkList with head
 class LinkedListNew {
   constructor() {
     this.head = null;

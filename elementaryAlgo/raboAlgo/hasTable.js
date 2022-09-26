@@ -15,7 +15,7 @@ class HashTable {
     let index = this.hash(key);
     let bucket = this.table[index];
     if (!bucket) {
-      bucket = [[key, value]];
+      this.table[index] = [[key, value]];
     } else {
       let someItem = bucket.find((item) => item[0] === key);
       if (someItem) {
