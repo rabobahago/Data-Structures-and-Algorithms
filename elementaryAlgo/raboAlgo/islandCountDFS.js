@@ -5,27 +5,25 @@ const directions = [
   [0, -1],
 ];
 const numberOfIsland = (matrix) => {
-  if (matrix.length === 0) {
-    return 0;
-  }
-  let islandCount = 0;
-  let queue = [];
-  //sequential order
+  if (matrix.length === 0) return 0;
+  let stack = [];
+  islandCount = 0;
+  //sequential check
   for (let row = 0; row < matrix.length; row++) {
     for (let col = 0; col < matrix[0].length; col++) {
       if (matrix[row][col] === 1) {
         islandCount++;
-        queue.push([row, col]);
-        while (queue.length > 0) {
-          let current = queue.shift();
-          const currRow = current[0];
-          const currCol = current[1];
+        stack.push([row, col]);
+        while (stack.length > 0) {
+          let current = stack.pop();
+          const [currRow, currCol] = current;
           matrix[currRow][currCol] = 0;
           for (let i = 0; i < directions.length; i++) {
-            const [directionRow, directionCol] = directions[i];
-            const currentRow = currRow + directionRow;
-            const currentCol = currCol + directionCol;
-
+            //destructure movement up, down, right, left
+            const [x, y] = directions[i];
+            // add the movement search to the current position
+            const currentRow = x + currRow;
+            const currentCol = y + currCol;
             if (
               currentRow < 0 ||
               currentRow >= matrix.length ||
@@ -35,7 +33,7 @@ const numberOfIsland = (matrix) => {
               continue;
             }
             if (matrix[currentRow][currentCol] === 1) {
-              queue.push([currentRow, currentCol]);
+              stack.push([currentRow, currentCol]);
             }
           }
         }
