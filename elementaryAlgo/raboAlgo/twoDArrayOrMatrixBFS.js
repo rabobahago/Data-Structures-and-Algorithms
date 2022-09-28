@@ -4,7 +4,7 @@ const directions = [
   [1, 0],
   [0, -1],
 ];
-
+// time O(n) and space O(n)
 const bfs = (matrix) => {
   let seen = new Array(matrix.length)
     .fill(0)
