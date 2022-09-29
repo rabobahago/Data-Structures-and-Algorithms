@@ -1832,3 +1832,50 @@ for (var i = 0; i < 3; i++) {
   }, 1000);
 }
 
+let directions = [
+  [-1, 0],
+  [0, 1],
+  [1, 0],
+  [0, -1],
+];
+var numIslands = function (grid) {
+  if (grid.length === 0) return 0;
+  let count = 0;
+  let queue = [];
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[0].length; col++) {
+      if (grid[row][col] === "1") {
+        count++;
+        queue.push([row, col]);
+        while (queue.length > 0) {
+          let [currRow, currCol] = queue.shift();
+          grid[currRow][currCol] = 0;
+          for (let i = 0; i < directions.length; i++) {
+            const [x, y] = directions[i];
+            const currentRow = x + currRow;
+            const currentCol = y + currCol;
+            if (
+              currentRow < 0 ||
+              currentRow >= grid.length ||
+              currentCol < 0 ||
+              currentCol >= grid[0].length
+            ) {
+              continue;
+            }
+            if (grid[currentRow][currentCol] === "1") {
+              queue.push([currentRow, currentCol]);
+            }
+          }
+        }
+      }
+    }
+  }
+  return count;
+};
+const matrix = [
+  ["1", "1", "1", "1", "0"],
+  ["1", "1", "0", "1", "0"],
+  ["1", "1", "0", "0", "0"],
+  ["0", "0", "0", "0", "0"],
+];
+console.log(numIslands(matrix));
