@@ -1879,3 +1879,12 @@ const matrix = [
   ["0", "0", "0", "0", "0"],
 ];
 console.log(numIslands(matrix));
+let dir = [
+  [2, 4],
+  [1, 3],
+  [2, 4],
+  [1, 3],
+];
+for (let [i, j] of dir) {
+  console.log(i, j);
+}
