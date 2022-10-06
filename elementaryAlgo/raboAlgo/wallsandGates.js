@@ -13,55 +13,43 @@ let directions = [
   [0, 1],
 ];
 
-var numIslands = function (grid) {
-  if (grid.length == 0) return 0;
+const wallsAndGates = (rooms) => {
+  if (!rooms || rooms.length === 0) {
+    return;
+  }
 
-  let row = grid.length - 1;
-  let col = grid[0].length - 1;
-  let count = 0;
+  let rows = rooms.length;
+  let cols = rooms[0].length;
 
-  for (let i = 0; i <= row; i++) {
-    for (let j = 0; j <= col; j++) {
-      if (grid[i][j] == "1") {
-        BFS(i, j, row, col, grid);
-        count++;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      // find all gates
+      if (rooms[i][j] === 0) {
+        traverse(rooms, i, j, rows, cols, 0);
       }
     }
   }
-
-  return count;
+  return rooms;
 };
 
-let BFS = function (i, j, row, col, grid) {
-  let queue = [[i, j]];
-  grid[i][j] = "-1";
-  while (queue.length) {
-    let [currRow, currCol] = queue.pop();
-
-    for (let dir of directions) {
-      let [r, c] = dir;
-
-      r = currRow + r;
-      c = currCol + c;
-
-      if (
-        r < 0 ||
-        r > row ||
-        c < 0 ||
-        c > col ||
-        grid[r][c] == "-1" ||
-        grid[r][c] == "0"
-      )
-        continue;
-
-      grid[r][c] = "-1";
-      queue.push([r, c]);
+function traverse(rooms, i, j, rows, cols, dist) {
+  //we have to set boundary in which we want to perform our depth first search
+  if (i >= 0 && i < rows && j >= 0 && j < cols) {
+    //even we within this bounded, if the element is not -1 and element is greater than or equal to the distance
+    if (rooms[i][j] !== -1 && rooms[i][j] >= dist) {
+      // set the element to be the new distance
+      rooms[i][j] = dist;
+      //perform depth first and increase the distance
+      traverse(rooms, i + 1, j, rows, cols, dist + 1);
+      traverse(rooms, i, j + 1, rows, cols, dist + 1);
+      traverse(rooms, i - 1, j, rows, cols, dist + 1);
+      traverse(rooms, i, j - 1, rows, cols, dist + 1);
     }
   }
-};
+}
 let INF = 2187983647;
 console.log(
-  numIslands([
+  wallsAndGates([
     [INF, -1, 0, INF],
     [INF, INF, INF, -1],
     [INF, -1, INF, -1],
