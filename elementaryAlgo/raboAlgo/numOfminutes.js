@@ -21,7 +21,6 @@
 
 const numOfMinutes = (n, headID, manager, informTime) => {
   const tree = [...Array(n)].map(() => []);
-
   for (let i = 0; i < n; i++) {
     if (manager[i] !== -1) tree[manager[i]].push(i);
   }
