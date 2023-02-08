@@ -3,13 +3,13 @@
 // If the the letters in each word have to be reversed, the string reversal procedure has to be followed after
 //breaking the string with spaces
 
-//solution one
+//reverse by words
 // function reverseByWords(str) {
 //   return str.split(" ").reverse().join(" ");
 // }
 // console.log(reverseByWords("hello world"));
 
-//solution two
+//reverse by world and letter
 function reverseByWords(str) {
   return str
     .split(" ")
