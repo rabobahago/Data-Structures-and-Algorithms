@@ -60,8 +60,8 @@ function* composeGenerator(start, end) {
   }
 }
 function* composeCharacter() {
-  yield* composeGenerator(48, 57);
-  yield* composeGenerator(65, 90);
+  yield* composeGenerator(48, 500);
+  yield* composeGenerator(65, 900);
   yield* composeGenerator(97, 122);
 }
 console.log(...composeCharacter());
