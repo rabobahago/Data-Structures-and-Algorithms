@@ -23,7 +23,7 @@ class Queue {
   }
   dequeue() {
     if (this.size === 0) {
-      return;
+      return null;
     }
     let remove = this.front;
     if (this.size === 1) {
@@ -44,3 +44,5 @@ queue.enqueue("c");
 console.log(queue.front.next.val);
 console.log(queue.front.next.next.val);
 console.log(queue.front.next.next.next);
+console.log(queue.dequeue());
+console.log(queue);
