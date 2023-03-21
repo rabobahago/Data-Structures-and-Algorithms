@@ -9,7 +9,7 @@ function sumArray(array) {
 }
 const _sum = (array, index) => {
   if (index === array.length) return 0;
-  return array[index] + _sum(array, index + 1);
+  return array[index] + _sum(array, ++index);
 };
 console.log(sumArray([4]));
 console.log(sum([4]));
