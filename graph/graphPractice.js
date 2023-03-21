@@ -132,3 +132,37 @@ const edges = [
 ];
 
 console.log(undirectedPath(edges, "j", "m")); //
+
+// Write a function, connectedComponentsCount, that takes in the
+// adjacency list of an undirected graph. The function should return
+// the number of connected components within the graph.
+const connectedComponentsCount = (graph) => {
+  //iterative from one component to another
+  let visited = new Set();
+  let count = 0;
+  for (let key in graph) {
+    if (explore(graph, key, visited) === true) {
+      count = count + 1;
+    }
+  }
+  return count;
+};
+const explore = (graph, src, visited) => {
+  if (visited.has(String(src))) return false;
+  visited.add(String(src));
+  for (let neighbor of graph[src]) {
+    explore(graph, neighbor, visited);
+  }
+  return true;
+};
+console.log(
+  connectedComponentsCount({
+    0: [8, 1, 5],
+    1: [0],
+    5: [0, 8],
+    8: [0, 5],
+    2: [3, 4],
+    3: [2, 4],
+    4: [3, 2],
+  })
+); // -> 2
