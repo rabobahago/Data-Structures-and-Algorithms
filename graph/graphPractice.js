@@ -208,14 +208,12 @@ console.log(
 // Consider the length as the number of edges in the path, not the number of nodes.
 // If there is no path between A and B, then return -1.
 const shortestPath = (edges, nodeA, nodeB) => {
-  const graph = buildShortestGraph(edges);
+  let graph = buildShortestGraph(edges);
   let visited = new Set([nodeA]);
-  const queue = [[nodeA, 0]];
+  let queue = [[nodeA, 0]];
   while (queue.length > 0) {
     let [node, distance] = queue.shift();
-    if (node === nodeB) {
-      return distance;
-    }
+    if (node === nodeB) return distance;
     for (let neighbor of graph[node]) {
       if (!visited.has(neighbor)) {
         queue.push([neighbor, distance + 1]);
@@ -224,7 +222,6 @@ const shortestPath = (edges, nodeA, nodeB) => {
   }
   return -1;
 };
-
 const buildShortestGraph = (edges) => {
   let graph = {};
   for (let edge of edges) {
@@ -249,3 +246,48 @@ const edgesShortest = [
 ];
 
 console.log(shortestPath(edgesShortest, "w", "z"));
+
+// Write a function, islandCount, that takes in a grid containing Ws
+// and Ls. W represents water and L represents land.
+// The function should return the number of islands on the grid.
+// An island is a vertically or horizontally connected region of land.
+// (row, col)
+//up(row - 1, col) down(row + 1, col) right(row, col + 1) left(row, col - 1)
+//Time O(rc)
+//Space O(rc)
+const islandCount = (grid) => {
+  let visited = new Set();
+  let count = 0;
+  for (let row = 0; row < grid.length; row += 1) {
+    for (let col = 0; col < grid[0].length; col += 1) {
+      if (explored(grid, row, col, visited) === true) {
+        count += 1;
+      }
+    }
+  }
+  return count;
+};
+const explored = (grid, row, col, visited) => {
+  let pos = row + "," + col;
+  let rowInBound = 0 <= row && row < grid.length;
+  let colInBound = 0 <= col && col < grid.length;
+  if (!rowInBound || !colInBound) return false;
+  if (grid[row][col] === "W") return false;
+  if (visited.has(pos)) return false;
+  visited.add(pos);
+  explored(grid, row - 1, col, visited);
+  explored(grid, row + 1, col, visited);
+  explored(grid, row, col - 1, visited);
+  explored(grid, row, col + 1, visited);
+  return true;
+};
+const grid = [
+  ["W", "L", "W", "W", "W"],
+  ["W", "L", "W", "W", "W"],
+  ["W", "W", "W", "L", "W"],
+  ["W", "W", "L", "L", "W"],
+  ["L", "W", "W", "L", "L"],
+  ["L", "L", "W", "W", "W"],
+];
+
+console.log(islandCount(grid)); // -> 3
