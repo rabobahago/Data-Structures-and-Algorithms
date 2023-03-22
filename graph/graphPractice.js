@@ -291,3 +291,48 @@ const grid = [
 ];
 
 console.log(islandCount(grid)); // -> 3
+
+// Write a function, minimumIsland, that takes
+// in a grid containing Ws and Ls. W represents water and L
+// represents land. The function should return the size of the
+// smallest island. An island is a vertically or horizontally connected region of land.
+
+// You may assume that the grid contains at least one island.
+const minimumIsland = (grid) => {
+  let size = Infinity;
+  let visited = new Set();
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[0].length; col++) {
+      const count = exploreLand(grid, row, col, visited);
+      if (count > 0 && size > count) {
+        size = count;
+      }
+    }
+  }
+  return size;
+};
+const exploreLand = (grid, row, col, visited) => {
+  let pos = row + "," + col;
+  let colInBound = 0 <= col && col < grid.length;
+  let rowInBound = 0 <= row && row < grid.length;
+  if (!rowInBound || !colInBound) return 0;
+  if (grid[row][col] === "W") return 0;
+  if (visited.has(pos)) return 0;
+  visited.add(pos);
+  let size = 1;
+  size += exploreLand(grid, row - 1, col, visited);
+  size += exploreLand(grid, row + 1, col, visited);
+  size += exploreLand(grid, row, col - 1, visited);
+  size += exploreLand(grid, row, col + 1, visited);
+  return size;
+};
+const g = [
+  ["W", "L", "W", "W", "W"],
+  ["W", "L", "W", "W", "W"],
+  ["W", "W", "W", "L", "W"],
+  ["W", "W", "L", "L", "W"],
+  ["L", "W", "W", "L", "L"],
+  ["L", "L", "W", "W", "W"],
+];
+
+console.log(minimumIsland(g));
