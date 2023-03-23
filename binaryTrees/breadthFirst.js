@@ -1,3 +1,6 @@
+// Write a function, breadthFirstValues, that
+// takes in the root of a binary tree. The function
+// should return an array containing all values of the tree in breadth-first order.
 class Node {
   constructor(value) {
     this.value = value;
@@ -30,3 +33,4 @@ const breadthFirstValues = (root) => {
   return result;
 };
 console.log(breadthFirstValues(a));
+//Time O(n) and O(n)

@@ -1,3 +1,9 @@
+// Write a function, depthFirstValues, that takes in the
+// root of a binary tree. The function should return an
+//  array containing all values of the tree in depth-first order.
+
+// Hey. This is our first binary tree problem, so you should be
+// liberal with watching the Approach and Walkthrough. Be productive, not stubborn. -AZ
 class Node {
   constructor(value) {
     this.value = value;
@@ -29,3 +35,12 @@ const depthFirstValues = (root) => {
   return results;
 };
 console.log(depthFirstValues(a));
+
+const depthFirstRecursion = (root) => {
+  if (root === null) return [];
+  let leftValues = depthFirstValues(root.left);
+  let rightValues = depthFirstValues(root.right);
+  return [root.value, ...leftValues, ...rightValues];
+};
+console.log(depthFirstRecursion(a));
+//Time O(n) and O(n)
