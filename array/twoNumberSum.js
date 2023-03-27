@@ -1,18 +1,3 @@
-// function twoNumberSum(array, targetSum) {
-//   // Write your code here.
-//   let hashTable = {};
-//   for (let i = 0; i < array.length; i++) {
-//     let char = array[i];
-//     let targetDiff = targetSum - char;
-//     if (targetDiff in hashTable) {
-//       return [char, targetDiff];
-//     } else {
-//       hashTable[char] = true;
-//     }
-//   }
-//   return [];
-// }
-
 const findTwoSum = (nums, target) => {
   if (nums.length === 0 || nums.length === 1) return [];
 
@@ -26,3 +11,19 @@ const findTwoSum = (nums, target) => {
 console.log(findTwoSum([2, 3, 4, 5, 10], 9));
 // Time O(n^2)
 // space O(1)
+const optimalSolution = (nums, target) => {
+  let numsMap = {};
+  for (let i = 0; i < nums.length; i++) {
+    let currentMapVal = numsMap[nums[i]];
+    if (currentMapVal >= 0) {
+      return [currentMapVal, i];
+    } else {
+      const numToFind = target - nums[i];
+      numsMap[numToFind] = i;
+    }
+  }
+  return null;
+};
+//Time O(n)
+//Time O(n)
+console.log(optimalSolution([2, 3, 4, 5, 10], 9));
