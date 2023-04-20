@@ -9,7 +9,7 @@ console.log(gridTravelers(2, 3));
 console.log(gridTravelers(3, 3));
 
 //this is known as memoization of gridTraveler
-//the  complexity of O(m * n) and space complexity O(m + n)
+//the  Time complexity of O(m * n) and space complexity O(m + n)
 //best approach
 const gridTraveler = (m, n, memo = {}) => {
   let key = m + ", " + n; //common gotchas in JavaScript
