@@ -12,5 +12,7 @@ map.delete("name");
 console.log(map);
 for (let elem of map.values()) {
   let [elem1, elem2] = elem;
-  console.log(elem1, elem2) + " ";
+  console.log(elem1);
+  console.log("....");
+  console.log(elem2);
 }
