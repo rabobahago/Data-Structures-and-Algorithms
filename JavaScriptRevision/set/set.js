@@ -1,4 +1,87 @@
-const set = new Set();
+function mySet() {
+  this.collection = [];
+  this.has = (element) => {
+    return this.collection.indexOf(element) !== -1;
+  };
+  this.values = () => {
+    return this.collection;
+  };
+  this.add = (element) => {
+    if (!this.has(element)) {
+      this.collection.push(element);
+      return true;
+    }
+    return false;
+  };
+  this.remove = (element) => {
+    if (this.has(element)) {
+      let index = this.collection.indexOf(element);
+      this.collection.splice(index, 1);
+      return true;
+    }
+    return false;
+  };
+
+  this.size = () => {
+    return this.collection.length;
+  };
+  this.union = (otherSet) => {
+    let unionElements = new mySet();
+    let first = this.values();
+    let second = otherSet.values();
+    first.forEach((e) => {
+      if (!unionElements.has(e)) {
+        unionElements.add(e);
+      }
+    });
+    second.forEach((e) => {
+      if (!unionElements.has(e)) {
+        unionElements.add(e);
+      }
+    });
+    return unionElements;
+  };
+  this.intersection = (otherSet) => {
+    let intersectionElements = new mySet();
+    let first = this.values();
+    first.forEach((e) => {
+      if (otherSet.has(e)) {
+        intersectionElements.add(e);
+      }
+    });
+    return intersectionElements;
+  };
+  this.difference = (otherSet) => {
+    let differenceElements = new mySet();
+    let first = this.values();
+    first.forEach((e) => {
+      if (!otherSet.has(e)) {
+        differenceElements.add(e);
+      }
+    });
+    return differenceElements;
+  };
+  this.subset = (otherSet) => {
+    let first = this.values();
+    return first.every((e) => {
+      return otherSet.has(e);
+    });
+  };
+}
+const setA = new mySet();
+const setB = new mySet();
+setB.add("a");
+setA.add("b");
+setA.add("c");
+setA.add("a");
+console.log(setA.collection);
+console.log(setB.collection);
+console.log(setA.values());
+console.log(setA.subset(setB));
+console.log(setA.intersection(setB).collection);
+console.log(setA.union(setB).collection);
+console.log(setA.difference(setB).collection);
+let set = new Set();
 set.add(0);
 set.add(1);
 set.add(100);

@@ -56,3 +56,31 @@ console.log(mulBase(num, base));
 num = 125;
 base = 8;
 console.log(mulBase(num, base));
+
+const StackMethod = function () {
+  this.count = 0;
+  this.storage = {};
+  this.push = (value) => {
+    this.storage[this.count] = value;
+    this.count++;
+  };
+  this.pop = () => {
+    if (this.count === 0) return undefined;
+    this.count--;
+    const item = this.storage[this.count];
+    delete this.storage[this.count];
+    return item;
+  };
+
+  this.size = () => {
+    return this.count;
+  };
+  this.peek = () => {
+    return this.storage[this.count - 1];
+  };
+};
+const stackm = new StackMethod();
+stackm.push(1);
+stackm.push(2);
+stackm.push(3);
+console.log(stackm.peek());
