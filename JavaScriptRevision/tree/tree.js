@@ -1,52 +1,81 @@
 class Node {
-  constructor(value) {
-    this.value = value;
+  constructor(data) {
+    this.data = data;
     this.left = null;
     this.right = null;
   }
 }
-class BinarySearchTree {
-  constructor(value) {
-    this.root = new Node(value);
+class BSTree {
+  constructor() {
+    this.root = null;
   }
-  insert(currentNode, newNode) {
-    if (currentNode === null) {
-      currentNode = new Node(newNode);
-    } else if (newNode < currentNode) {
-      currentNode = this.insert(currentNode.left, newNode);
-    } else {
-      currentNode = this.insert(currentNode.right, newNode);
-    }
-    return currentNode;
-  }
-  insertBST(newNode) {
+  add(data) {
+    let node = new Node(data);
     if (this.root === null) {
-      this.root = new Node(newNode);
+      this.root = node;
       return;
+    } else {
+      const searchTree = (data) => {
+        if (data < node.data) {
+          if (node.left === null) {
+            node.left = new Node(data);
+            return;
+          } else if (node.left !== null) {
+            return searchTree(node.left);
+          }
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data);
+            return;
+          } else if (node.right !== null) {
+            return searchTree(node.right);
+          }
+        } else {
+          return null;
+        }
+      };
+
+      return searchTree(node);
     }
-    this.insert(this.root, newNode);
   }
-  inOrderPrint(currentNode) {
-    if (currentNode !== null) {
-      this.inOrderPrint(currentNode.left);
-      console.log(currentNode.value);
-      this.inOrderPrint(currentNode.right);
+  findMax() {
+    let current = this.root;
+    while (current.right !== null) {
+      current = current.right;
     }
+    return current.data;
   }
-  inPreOrder(currentNode) {
-    if (currentNode !== null) {
-      console.log(currentNode.value);
-      this.insertInOrder(currentNode.left);
-      this.insertInOrder(currentNode.right);
+  findMin() {
+    let current = this.root;
+    while (current.left !== null) {
+      current = current.left;
     }
+    return current.data;
+  }
+  find(data) {
+    let current = this.root;
+    while (current) {
+      if (data === current.data) {
+        return current.data;
+      } else if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return null;
+  }
+  isPresent(data) {
+    let current = this.root;
+    while (current) {
+      if (current.data === data) {
+        return true;
+      } else if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
   }
 }
-var BST = new BinarySearchTree(6);
-console.log("The root val for BST : ", BST.root.value);
-BST.insertBST(4);
-BST.insertBST(9);
-BST.insertBST(5);
-BST.insertBST(2);
-BST.insertBST(8);
-BST.insertBST(12);
-BST.inOrderPrint(BST.root);

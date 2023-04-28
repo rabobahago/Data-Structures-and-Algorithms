@@ -4,7 +4,7 @@ const isPalindrome = (word) => {
   for (let i = 0; i < word.length; i++) {
     stack.push(word[i]);
   }
-  for (let i = 0; i < stack.length; i++) {
+  for (let i = 0; i < word.length; i++) {
     rword += stack.pop();
   }
   if (word !== rword) return false;
