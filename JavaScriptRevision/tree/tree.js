@@ -78,4 +78,31 @@ class BSTree {
     }
     return false;
   }
+  removeNode(data, node = this.root) {
+    if (node === null) {
+      return null;
+    }
+
+    if (data < node.data) {
+      node.left = this.removeNode(data, node.left);
+      return node;
+    } else if (data > node.data) {
+      node.right = this.removeNode(data, node.right);
+      return node;
+    } else {
+      if (node.left === null && node.right === null) {
+        node = null;
+        return node;
+      }
+      if (node.left === null) {
+        node = node.right;
+        return node;
+      } else if (node.right === null) {
+        node = node.left;
+        return node;
+      } else {
+        return node;
+      }
+    }
+  }
 }
