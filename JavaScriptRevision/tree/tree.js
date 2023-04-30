@@ -38,6 +38,14 @@ class BSTree {
       return searchTree(node);
     }
   }
+  traverseInOrder(node = this.root, memo = []) {
+    if (node !== null) {
+      this.traverseInOrder(node.left, memo);
+      memo.push(node.data);
+      this.traverseInOrder(node.right, memo);
+    }
+    return memo;
+  }
   findMax() {
     let current = this.root;
     while (current.right !== null) {
