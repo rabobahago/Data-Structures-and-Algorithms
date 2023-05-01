@@ -46,6 +46,14 @@ class BSTree {
     }
     return memo;
   }
+  traversePreOrder(node = this.root, memo = []) {
+    if (node !== null) {
+        memo.push(node.data);
+        this.traverseInOrder(node.left, memo);
+        this.traverseInOrder(node.right, memo);
+    }
+    return memo;
+}
   findMax() {
     let current = this.root;
     while (current.right !== null) {
