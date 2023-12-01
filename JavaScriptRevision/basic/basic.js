@@ -162,3 +162,77 @@ Car.prototype.getSpeed = () => {
 
 let c = new Car();
 console.log(c.getSpeed());
+let countries = {
+  name: "Nigeria",
+};
+for (let n in countries) {
+  console.log(n);
+  console.log(countries[n]);
+}
+for (let n of Object.keys(countries)) {
+  console.log(n);
+}
+for (let [n, t] of Object.entries(countries)) {
+  console.log(n, t);
+}
+function message(name) {
+  let age = 56;
+  function sayHi() {
+    return "Hi, my name is " + name + ", I am " + age + " years old";
+  }
+  return sayHi;
+}
+let hi = message("Rabo");
+console.log(hi());
+
+for (let i = 0; i <= 4; i++) {
+  setTimeout(() => {
+    console.log("index", i, " after", i, " seconds");
+  }, i * 1000);
+}
+function userDetail() {
+  return new Promise((resolved, rejected) => {
+    setTimeout(() => {
+      resolved([{ name: "rabo", email: "raboyusuf94@gmail.com" }]);
+    }, 1000);
+  });
+}
+function onFufilled(user) {
+  console.log(user);
+}
+const promise = userDetail();
+promise.then(onFufilled);
+
+function convertArray() {
+  return Array.prototype.slice.call(arguments);
+}
+console.log(convertArray(1, 2, 4));
+
+let numbers = [0, 1, 2, 3, 10, 20, 30];
+numbers.sort((a, b) => a - b);
+
+console.log(numbers);
+
+let employees = [
+  { name: "John Doc", salary: 90000, hireDate: "July 1, 2010" },
+  { name: "David", salary: 75000, hireDate: "August 15, 2010" },
+  { name: "Ana", salary: 80000, hireDate: "December 12, 2010" },
+];
+const sortByName = employees.sort((a, b) => {
+  let x = a.name.toUpperCase();
+  let y = b.name.toUpperCase();
+  return x === y ? 0 : x < y ? -1 : 1;
+});
+console.log(sortByName);
+
+const sortByDate = employees.sort((a, b) => {
+  let x = new Date(a.hireDate);
+  let y = new Date(b.hireDate);
+  return x - y;
+});
+console.log(sortByDate);
+
+const sortByNameLength = employees.sort((a, b) => {
+  return a.name.length - b.name.length;
+});
+console.log(sortByNameLength);
