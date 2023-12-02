@@ -236,3 +236,45 @@ const sortByNameLength = employees.sort((a, b) => {
   return a.name.length - b.name.length;
 });
 console.log(sortByNameLength);
+
+const sum = employees.reduce((a, b) => a + b.salary, 0);
+console.log(sum);
+const filted = employees.filter((a) => {
+  return a.salary > 75000;
+});
+console.log(filted);
+const mapName = employees.map((a) => {
+  let name =
+    a.name === "Ana"
+      ? a.name + " Yusuf"
+      : a.name === "John Doc"
+      ? a.name
+      : a.name === "David"
+      ? a.name + " Dee"
+      : "";
+  let salary =
+    a.salary < 75000
+      ? a.salary + 100
+      : a.salary > 7500 && a.salary <= 79000
+      ? a.salary + 200
+      : a.salary + 30;
+  let hireDate = a.hireDate;
+  return { name, salary, hireDate };
+});
+console.log(mapName);
+
+let re = /[A-Z]/;
+let str = "hi There! How are you?";
+let index = str.search(re);
+
+console.log(index);
+let numb = "12345 ye uussjj";
+let ind = numb.search(/[a-z]/);
+console.log(ind);
+console.log("23556".padStart(8, "x"));
+console.log("5959".padEnd(9, 0));
+let email = "raboyusuf94@gmail.com";
+const domain = email.substring(email.indexOf("@") + 1);
+console.log(domain);
+const domainName = email.substr(0, email.indexOf("@"));
+console.log(domain);
