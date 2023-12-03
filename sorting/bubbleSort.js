@@ -27,3 +27,4 @@ function bubbleSort(array) {
   }
   return array;
 }
+console.log(bubbleSort([6, 8, 2, 0, 1, 20]));
